@@ -1,5 +1,50 @@
 /*CSS Personalizado*/
 
+.table>tbody>tr:hover {
+  cursor: pointer;
+  box-shadow: 3px 1px 3px 2px #fff;
+}
+
+.modal-footer{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.modal-header{
+  padding-bottom: 0px;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+
+input[type=number]::-webkit-inner-spin-button {
+
+    -webkit-appearance: none;
+
+    margin: 0;
+
+}
+
+input[type=number] {
+
+    -moz-appearance:textfield;
+
+}
+
+.table>tbody>tr>td a{
+  color: #ffb236;
+}
+
+.table>thead>tr>th{
+  text-align: center;
+  background-color: #143153;
+}
+
+.table>tbody>tr>td{
+  text-align: center;
+  font-size: 12px;
+}
+
+
 footer{
   background-color: #143153;
   color: #fff;

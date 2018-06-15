@@ -25,6 +25,12 @@
                 "</a>".
               "</li>".
               "<li>".
+                "<a href='?p=crear_grupo'>".
+                  "<i class='now-ui-icons objects_globe'></i>".
+                  "<p>Crear Grupo</p>".
+                "</a>".
+              "</li>".
+              "<li>".
                 "<a href='./security/cerrar_session.php'>".
                   "<i class='now-ui-icons ui-1_simple-remove'></i>".
                   "<p>Cerrar Sessión</p>".

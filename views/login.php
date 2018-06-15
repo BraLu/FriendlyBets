@@ -26,7 +26,7 @@
               </div>
               <div class="col-md-12">
                 <div class="form-group text-center">
-                  <input type="button" class="btn btn-danger btn-round" onclick="javascript:Acceso();" style="width: 50%" id="btnIngresar" value="Ingresar" >
+                  <input type="button" class="btn btn-danger" onclick="javascript:Acceso();" style="width: 40%" id="btnIngresar" value="Ingresar" >
                 </div>
               </div>
             </div>
@@ -87,7 +87,7 @@
 
               <div class="col-md-12">
                 <div class="form-group text-center">
-                  <button class="btn btn-danger btn-round" style="width: 50%" >Guardar</button>
+                  <button class="btn btn-danger" style="width: 40%" >Guardar</button>
                 </div>
               </div>
 

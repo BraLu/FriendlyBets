@@ -6,7 +6,7 @@
   }else
   {
      $_SESSION["session"] = "";
-     echo "Session2".$_SESSION["session"];
+     /*echo "Session2".$_SESSION["session"];*/
   }
   
 ?>
@@ -33,7 +33,7 @@
       <!---->
 
       <div class="panel-header panel-header-sm">
-
+      <!--Hola -->
       </div>
 
       <div class="content">
@@ -43,11 +43,13 @@
               if (!empty($_SESSION["session"]) and ($_SESSION["session"] != "")) {
                 // Pequeña lógica para capturar la pagina que queremos abrir
                 $pagina = isset($_GET['p']) ? strtolower($_GET['p']) : 'home';
-
+                
                 /* Estamos considerando que el parámetro enviando tiene el mismo nombre del archivo a cargar, si este no fuera así
                   se produciría un error de archivo no encontrado */
                   include('views/' . $pagina . '.php');
+                  
               }else{
+                
                 // Pequeña lógica para capturar la pagina que queremos abrir
                 $pagina = isset($_GET['p']) ? strtolower($_GET['p']) : 'login';
 
