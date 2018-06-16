@@ -30,10 +30,10 @@
 					            <td>&euro; 100.00</td>
 					            <td class="td-actions text-center">
 					            	<button type="button" data-placement="bottom" title="Aceptar" class="btn btn-success btn-sm btn-icon" data-toggle='modal' data-target='#enviarSolicitud'>
-					                    <i class="now-ui-icons ui-1_check"></i>
+					                    <i class="fa fa-check"></i>
 					                </button>
 					                <button type="button" onclick="javascript:RechazarSolicitud()" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Rechazar" class="btn btn-danger btn-sm btn-icon">
-					                    <i class="now-ui-icons ui-1_simple-remove"></i>
+					                    <i class="fa fa-times"></i>
 					                </button>
 					            </td>
 					            <td>Abierto/Curso/Cerrado</td>
@@ -88,7 +88,7 @@
 					            <td>&euro; 200.00</td>
 					            <td class="td-actions text-center">
 					            	<button onclick="return false" class="btn btn-warning btn-sm" data-toggle='modal' data-target='#enviarSolicitud'>
-									  <i class="now-ui-icons ui-1_check"></i> Unirse
+									  <i class="fa fa-envelope"></i> Unirse
 									</button>
 					            </td>
 					        </tr>
@@ -100,7 +100,7 @@
 					            <td>&euro; 100.00</td>
 					            <td class="td-actions text-center">
 					            	<button onclick="return false" class="btn btn-warning btn-sm" data-toggle='modal' data-target='#enviarSolicitud'>
-									  <i class="now-ui-icons ui-1_check"></i> Unirse
+									  <i class="fa fa-envelope"></i> Unirse
 									</button>
 					            </td>
 					        </tr>
