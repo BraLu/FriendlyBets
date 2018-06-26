@@ -5,18 +5,18 @@
           <h5 class="title">INICIO SESIÓN</h5>
         </div>
         <div class="card-body">
-          <form>
+          
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Email</label>
-                  <input type="text" class="form-control" placeholder="Email" value="jsantos@upc.edu.pe">
+                  <input type="text" class="form-control" autofocus="" autocomplete="" id="emaill" placeholder="Email" value="">
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="form-group">
                   <label>Password</label>
-                  <input type="Password" class="form-control" placeholder="Password" value="michael23">
+                  <input type="Password" class="form-control" id="passwordl" placeholder="Password" value="">
                 </div>
               </div>
               <div class="col-md-12">
@@ -30,7 +30,7 @@
                 </div>
               </div>
             </div>
-          </form>
+          
         </div>
       </div>
     </div>
@@ -42,57 +42,57 @@
           <h5 class="title">REGISTRAR USUARIO</h5>
         </div>
         <div class="card-body">
-          <form>
+          
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Nombres</label>
-                  <input type="text" class="form-control" placeholder="Nombres" value="">
+                  <input type="text" id="nombre" class="form-control" autofocus="" placeholder="Nombres" value="" required>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Apellidos</label>
-                  <input type="text" class="form-control" placeholder="Apellidos" value="">
+                  <input type="text" id="apellidos" class="form-control" placeholder="Apellidos" value="" required>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Celular</label>
-                  <input type="text" class="form-control" placeholder="Celular" value="">
+                  <input type="text" id="celular" class="form-control" placeholder="Celular" value="" required>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Email</label>
-                  <input type="email" class="form-control" placeholder="Email" value="">
+                  <input type="email" id="email" class="form-control" autocomplete="" placeholder="Email" value="" required>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Password</label>
-                  <input type="Password" class="form-control" placeholder="Password" value="">
+                  <input type="Password" id="password" class="form-control" placeholder="Password" value="" required>
                 </div>
               </div>
 
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Repetir Password</label>
-                  <input type="Password" class="form-control" placeholder="Repetir Password" value="">
+                  <input type="Password" id="password2" class="form-control" placeholder="Repetir Password" value="" required>
                 </div>
               </div>
 
               <div class="col-md-12">
                 <div class="form-group text-center">
-                  <button class="btn btn-danger" style="width: 40%" >Guardar</button>
+                  <input type="button" class="btn btn-danger" onclick="javascript:RegistrarUsuario();" style="width: 40%" id="btnGuardar" value="Guardar" >
                 </div>
               </div>
 
             </div>
-          </form>
+          
         </div>
       </div>
     </div>
@@ -100,10 +100,9 @@
 
 <!--Acciones-->
 <script type="text/javascript">
-  
-  $(function() {
 
-  });
+
+
 
   function Registrate() {
       $('.frm-login').css("display","none");
@@ -117,7 +116,79 @@
 
   function Acceso() {
     // body...
-      location='security/iniciar_session.php'
+      var username = $("#emaill").val();
+      var password = $("#passwordl").val();
+
+      if ((username.length > 0) && (password.length > 0)) {
+          $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8081/api/usuario/'+username+'/'+password,
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function(response) {
+                    /*console.log(JSON.stringify(response));*/
+                    /*console.log(response);*/
+                    if (response==1) {
+                        location='security/iniciar_session.php';
+                    }else{
+                      fbNotify('top','right','danger','Usuario y/o Password Incorrectos.');
+                    }
+                },
+                error: function(error) {
+                    fbNotify('top','right','danger',error);
+                    /*console.log(error);*/
+                }
+          });
+
+      }else{
+          fbNotify('top','right','info','Completar los campos de Email y/o Password.');
+      }
+  }
+
+
+
+  function RegistrarUsuario(){
+      /*http://localhost:8081/api/usuario/1*/
+      /*https://friendlybets-fluque.c9users.io:8081/api/usuario/1*/
+
+      if (($("#password").val().length > 0) && ($("#password2").val().length > 0) && ($("#password").val() == $("#password2").val())) {
+        var user = {  nombre : $("#nombre").val(),
+                        apellidos : $("#apellidos").val(),
+                        celular : $("#celular").val(),
+                        email : $("#email").val(),
+                        password : $("#password").val() }
+
+        $.ajax({
+              type: 'POST',
+              url: 'http://localhost:8081/api/usuario',
+              dataType: 'json',
+              contentType: 'application/json',
+              data: JSON.stringify(user),
+              success: function(response) {
+                  //console.log(JSON.stringify(response));
+                  location='index.php';
+              },
+              error: function( jqXHR, textStatus, errorThrown ) {
+
+                if (jqXHR.status == 400) {
+                    for (var i = 0; i < jqXHR.responseJSON.errors.length; i++) {
+                      fbNotify('top','right','danger', jqXHR.responseJSON.errors[i].defaultMessage);
+                    }
+                }
+                if (jqXHR.status == 500) {
+                  console.log(jqXHR);
+                    fbNotify('top','right','danger', jqXHR.responseJSON.message);
+                }
+                //console.log(jqXHR);
+                //console.log(textStatus);
+                //console.log(errorThrown);
+                //fbNotify('top','right','danger', status + ' - ' + err);
+                //console.log(JSON.stringify(error))
+              }
+        }); 
+      }else{
+          fbNotify('top','right','info', "Los password's ingresados son diferentes.");
+      }     
   }
 
 </script>

@@ -1,5 +1,12 @@
 /*CSS Personalizado*/
 
+/*Alert*/
+@media (max-width: 500px) { 
+  .alert{
+    right: 0px !important;
+  }
+}
+
 .form-check{
   padding-left: 0px;
 }

@@ -15,3 +15,4 @@
   <script src="./assets/js/now-ui-dashboard.min.js?v=1.1.0" type="text/javascript"></script>
   <!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="./assets/demo/demo.js"></script>
+  <script src="./assets/demo/fb.js"></script>
