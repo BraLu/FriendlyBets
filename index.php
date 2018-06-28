@@ -20,8 +20,24 @@
 <!---->
 
 <body class="">
-  <div class="wrapper ">
 
+    <!--Loading-->
+      <!---
+      <div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="loadingLabel" aria-hidden="true">
+          <div class="modal-dialog" id="fbloading">
+              <img src="assets/img/loading.gif" width="200px">
+          </div>
+      </div>
+      -->
+
+      <div class="modal-fbloading" style="display: none;">
+          <div style="background-color: #000;position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 1060;opacity: 0.20;"></div>
+          <div id="fbloading"><img src="assets/img/loading.gif"></div>
+      </div>
+
+    <!---->
+
+  <div class="wrapper ">
     <!--Aqui va el sidebar-->
       <?php include("views/sidebar.php") ?>    
     <!---->

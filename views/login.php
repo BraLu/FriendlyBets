@@ -102,7 +102,9 @@
 <script type="text/javascript">
 
 
-
+  fbOnClick("emaill","btnIngresar");
+  fbOnClick("passwordl","btnIngresar");
+  
 
   function Registrate() {
       $('.frm-login').css("display","none");
@@ -119,10 +121,11 @@
       var username = $("#emaill").val();
       var password = $("#passwordl").val();
 
-      if ((username.length > 0) && (password.length > 0)) {
+      fbShowLoading();
+      if ((username.length > 0) && (password.length > 0)) {   
           $.ajax({
                 type: 'GET',
-                url: 'http://localhost:8081/api/usuario/'+username+'/'+password,
+                url: 'https://friendlybets-fluque.c9users.io:8081/api/usuario/'+username+'/'+password,
                 dataType: 'json',
                 contentType: 'application/json',
                 success: function(response) {
@@ -131,16 +134,19 @@
                     if (response==1) {
                         location='security/iniciar_session.php';
                     }else{
+                      fbHideLoading();
                       fbNotify('top','right','danger','Usuario y/o Password Incorrectos.');
                     }
                 },
                 error: function(error) {
+                    fbHideLoading();
                     fbNotify('top','right','danger',error);
                     /*console.log(error);*/
                 }
           });
 
       }else{
+          fbHideLoading();
           fbNotify('top','right','info','Completar los campos de Email y/o Password.');
       }
   }
@@ -150,7 +156,7 @@
   function RegistrarUsuario(){
       /*http://localhost:8081/api/usuario/1*/
       /*https://friendlybets-fluque.c9users.io:8081/api/usuario/1*/
-
+      fbShowLoading();
       if (($("#password").val().length > 0) && ($("#password2").val().length > 0) && ($("#password").val() == $("#password2").val())) {
         var user = {  nombre : $("#nombre").val(),
                         apellidos : $("#apellidos").val(),
@@ -160,7 +166,7 @@
 
         $.ajax({
               type: 'POST',
-              url: 'http://localhost:8081/api/usuario',
+              url: 'https://friendlybets-fluque.c9users.io:8081/api/usuario',
               dataType: 'json',
               contentType: 'application/json',
               data: JSON.stringify(user),
@@ -171,12 +177,14 @@
               error: function( jqXHR, textStatus, errorThrown ) {
 
                 if (jqXHR.status == 400) {
+                    fbHideLoading();
                     for (var i = 0; i < jqXHR.responseJSON.errors.length; i++) {
                       fbNotify('top','right','danger', jqXHR.responseJSON.errors[i].defaultMessage);
                     }
                 }
                 if (jqXHR.status == 500) {
-                  console.log(jqXHR);
+                    //console.log(jqXHR);
+                    fbHideLoading();
                     fbNotify('top','right','danger', jqXHR.responseJSON.message);
                 }
                 //console.log(jqXHR);
@@ -187,6 +195,7 @@
               }
         }); 
       }else{
+          fbHideLoading();
           fbNotify('top','right','info', "Los password's ingresados son diferentes.");
       }     
   }
