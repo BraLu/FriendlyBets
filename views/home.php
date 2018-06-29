@@ -1,6 +1,6 @@
 <?php  
 
-	require '/controllers/home_controller.php';
+	require 'controllers/home_controller.php';
 	
 	$objHomeController = new homeController();
 

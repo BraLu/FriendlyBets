@@ -1,6 +1,6 @@
 <?php
 
-  require '/models/conexion.php'; 
+  require 'models/conexion.php'; 
   
   class grupo_model{
 
@@ -11,7 +11,7 @@
         $this->db = $database->dbconexion();
     }
 
-    
+
     public function obtenerMisGrupos($idUsuario = 1){
 
     	try {

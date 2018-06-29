@@ -1,6 +1,6 @@
 <?php
 
-	require "/models/grupo.php";
+	require "models/grupo.php";
 
 	class homeController{
 
@@ -31,7 +31,7 @@
     			$objGrupo = new grupo_model();
 
 	    		$data = $objGrupo->obtenerGruposTop();
-	    		
+
 	    		return $data;
 
     		} catch(Exception $e){
