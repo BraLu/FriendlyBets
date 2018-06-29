@@ -22,7 +22,7 @@
 	        while($filas=$consulta->fetch_assoc()){
 	            $response[]=$filas;
 	        }
-
+         
 	        return $response;
 
     	} catch(Exception $e){
