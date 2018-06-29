@@ -1,3 +1,13 @@
+<?php  
+
+	require '/controllers/home_controller.php';
+	
+	$objHomeController = new homeController();
+
+	$dataGrupos = $objHomeController->obtenerMisGrupos();
+	$dataTopGrupos = $objHomeController->obtenerGrupoTop();
+
+?>
 <div class="row">
 	
 	<div class="col-md-12 frm-home">
@@ -40,18 +50,20 @@
 					        </tr>
 
 				    		<?php 
+				    			if(count($dataGrupos) > 0){
 
-				    			for ($i=1; $i <= 30 ; $i++) { 
-				    				# code...
-				    				echo "<tr>".
-								            "<td><a href='?p=detalle_grupo'>Grupo $i</a></td>".
-								            "<td>Administrador</td>".
-								            "<td>05/06/2018</td>".
-								            "<td>10</td>".
-								            "<td>&euro; 200.00</td>".
-								            "<td>2 Pendientes</td>".
-								            "<td>Abierto</td>".
-								        "</tr>";
+					    			foreach($dataGrupos as $i => $record) { 
+					    				
+					    				echo "<tr>".
+									            "<td><a href='?p=detalle_grupo'>".utf8_encode($record['Nombre_Grp'])." </a></td>".
+									            "<td>".utf8_encode($record['Administrador'])."</td>".
+									            "<td>".$record['MIN(P.Fecha_Part)']."</td>".
+									            "<td>".$record['Cant_Amigos']."</td>".
+									            "<td>".MONEDA.' '. number_format($record['Monto_apuesta'],2)."</td>".
+									            "<td>".$record['Solicitudes']." Pendientes</td>".
+									            "<td>".$record['Sts_Grp']."</td>".
+									        "</tr>";
+					    			}
 				    			}
 				    		?>
 					    </tbody>
@@ -80,30 +92,29 @@
 					        </tr>
 					    </thead>
 					    <tbody>
+
+					    	<?php 
+					    		if(count($dataTopGrupos) > 0 ){ 
+					    			foreach ($dataTopGrupos as $key => $value) {
+					    			
+					    	?>
 					        <tr>
-					            <td>Grupo 4</td>
-					            <td>Jose Campos</td>
-					            <td>05/06/2018</td>
-					            <td>&euro; 10.00</td>
-					            <td>&euro; 200.00</td>
+					            <td><?php echo $value['Nombre_Grp']; ?></td>
+					            <td><?php echo $value['nombre']; ?></td>
+					            <td><?php echo $value['fecha_part']; ?></td>
+					            <td><?php echo MONEDA.' '. number_format($value['monto_apuesta'],2); ?></td>
+					            <td><?php echo MONEDA.' '. number_format($value['apuesta'],2); ?></td>
 					            <td class="td-actions text-center">
 					            	<button onclick="return false" class="btn btn-warning btn-sm" data-toggle='modal' data-target='#enviarSolicitud'>
 									  <i class="fa fa-envelope"></i> Unirse
 									</button>
 					            </td>
 					        </tr>
-					        <tr>
-					            <td>Grupo 5</td>
-					            <td>Carlos Santos</td>
-					            <td>05/06/2018</td>
-					            <td>&euro; 5.00</td>
-					            <td>&euro; 100.00</td>
-					            <td class="td-actions text-center">
-					            	<button onclick="return false" class="btn btn-warning btn-sm" data-toggle='modal' data-target='#enviarSolicitud'>
-									  <i class="fa fa-envelope"></i> Unirse
-									</button>
-					            </td>
-					        </tr>
+					        <?php 
+					    			} 
+					    		} 
+					    	?>
+
 					    </tbody>
 					</table>
 				</div>
