@@ -1,3 +1,15 @@
+<?php 
+  require '/models/conexion.php'; 
+
+  $db = new BaseDatos();
+
+  if($db->conectar()){
+      $db->pruebadb();
+      $db->desconectar();
+  }
+
+?>
+
 <div class="row">
     <div class="col-md-5 frm-login" >
       <div class="card">
