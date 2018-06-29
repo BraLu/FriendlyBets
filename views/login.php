@@ -1,5 +1,5 @@
 <?php 
-  require '/models/conexion.php'; 
+  require 'models/conexion.php'; 
 
   $db = new BaseDatos();
 

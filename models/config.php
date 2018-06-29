@@ -1,6 +1,6 @@
 <?php
 
 define('HOST','localhost'); 
-define('USER','root');
+define('USER','fluque');
 define('PASS','');
 define('DBNAME','friendlybets');
