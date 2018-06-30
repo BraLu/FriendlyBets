@@ -35,23 +35,6 @@
 					    </thead>
 					    <tbody>
 
-					    	<tr>
-					            <td><a href="?p=detalle_grupo">Grupo 0</a></td>
-					            <td>Participante</td>
-					            <td>05/06/2018</td>
-					            <td>10</td>
-					            <td>&euro; 100.00</td>
-					            <td class="td-actions text-center">
-					            	<button type="button" data-placement="bottom" title="Aceptar" class="btn btn-success btn-sm btn-icon" data-toggle='modal' data-target='#enviarSolicitud'>
-					                    <i class="fa fa-check"></i>
-					                </button>
-					                <button type="button" onclick="javascript:RechazarSolicitud()" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Rechazar" class="btn btn-danger btn-sm btn-icon">
-					                    <i class="fa fa-times"></i>
-					                </button>
-					            </td>
-					            <td>Abierto/Curso/Cerrado</td>
-					        </tr>
-
 				    		<?php 
 				    			if(count($dataGrupos) > 0){
 
@@ -65,7 +48,16 @@
 									            <td><?php echo $record['fecha_prim_part']; ?></td>
 									            <td><?php echo $record['cant_amigos']; ?></td>
 									            <td><?php echo MONEDA.' '. number_format($record['total_apuesta'],2); ?></td>
-									            <td><?php echo $record['solicitudes']; ?></td>
+									            <td>
+									            	<?php //echo $record['solicitudes']; ?>
+									            		
+										            <button type="button" data-placement="bottom" title="Aceptar" class="btn btn-success btn-sm btn-icon" data-toggle='modal' data-target='#enviarSolicitud'>
+								                    <i class="fa fa-check"></i>
+								                	</button>
+									                <button type="button" onclick="javascript:RechazarSolicitud()" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Rechazar" class="btn btn-danger btn-sm btn-icon">
+									                    <i class="fa fa-times"></i>
+									                </button>		
+								            	</td>
 									            <td><?php echo $record['estado']; ?></td>
 									        </tr>
 							<?php 
