@@ -55,17 +55,20 @@
 				    		<?php 
 				    			if(count($dataGrupos) > 0){
 
-					    			foreach($dataGrupos as $i => $record) { 
+					    			foreach($dataGrupos as  $record) { 
 					    				
-					    				echo "<tr>".
-									            "<td><a href='?p=detalle_grupo'>".utf8_encode($record['Nombre_Grp'])." </a></td>".
-									            "<td>".utf8_encode($record['Administrador'])."</td>".
-									            "<td>".$record['MIN(P.Fecha_Part)']."</td>".
-									            "<td>".$record['Cant_Amigos']."</td>".
-									            "<td>".MONEDA.' '. number_format($record['Monto_apuesta'],2)."</td>".
-									            "<td>".$record['Solicitudes']." Pendientes</td>".
-									            "<td>".$record['Sts_Grp']."</td>".
-									        "</tr>";
+					    				?>
+					    				
+					    				<tr>
+									            <td><a href='?p=detalle_grupo'><?php echo utf8_encode($record['grupos']); ?></a></td>
+									            <td><?php echo utf8_encode($record['administrador']); ?></td>
+									            <td><?php echo $record['fecha_prim_part']; ?></td>
+									            <td><?php echo $record['cant_amigos']; ?></td>
+									            <td><?php echo MONEDA.' '. number_format($record['total_apuesta'],2); ?></td>
+									            <td><?php echo $record['solicitudes']; ?></td>
+									            <td><?php echo $record['estado']; ?></td>
+									        </tr>
+							<?php 
 					    			}
 				    			}
 				    		?>
