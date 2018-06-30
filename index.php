@@ -66,7 +66,7 @@
               }else{
                 
                 // Pequeña lógica para capturar la pagina que queremos abrir
-                $pagina = isset($_GET['p']) ? strtolower($_GET['p']) : 'login';
+                $pagina = isset($_GET['p']) ? strtolower($_GET['p']) : 'home';
 
                 /* Estamos considerando que el parámetro enviando tiene el mismo nombre del archivo a cargar, si este no fuera así
                   se produciría un error de archivo no encontrado */

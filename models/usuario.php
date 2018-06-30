@@ -4,7 +4,7 @@ class usuario_model{
     private $usuarios;
  
     public function __construct(){
-        $this->db=BaseDatos::conectar();
+        $this->db=BaseDatos::dbconexion();
         $this->usuarios=array();
     }
 

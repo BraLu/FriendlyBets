@@ -1,3 +1,16 @@
+<?php  
+
+	require 'controllers/home_controller.php';
+	
+	$objHomeController = new homeController();
+
+	$dataGrupos = $objHomeController->obtenerMisGrupos();
+	$dataTopGrupos = $objHomeController->obtenerGrupoTop();
+	
+
+	$dataDetalle = $objHomeController->obtenerDetalleApuesta();
+	
+?>
 <div class="row">
 	
 	<div class="col-md-12 frm-home">
@@ -22,36 +35,33 @@
 					    </thead>
 					    <tbody>
 
-					    	<tr>
-					            <td><a href="?p=detalle_grupo">Grupo 0</a></td>
-					            <td>Participante</td>
-					            <td>05/06/2018</td>
-					            <td>10</td>
-					            <td>&euro; 100.00</td>
-					            <td class="td-actions text-center">
-					            	<button type="button" data-placement="bottom" title="Aceptar" class="btn btn-success btn-sm btn-icon" data-toggle='modal' data-target='#enviarSolicitud'>
-					                    <i class="fa fa-check"></i>
-					                </button>
-					                <button type="button" onclick="javascript:RechazarSolicitud()" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Rechazar" class="btn btn-danger btn-sm btn-icon">
-					                    <i class="fa fa-times"></i>
-					                </button>
-					            </td>
-					            <td>Abierto/Curso/Cerrado</td>
-					        </tr>
-
 				    		<?php 
+				    			if(count($dataGrupos) > 0){
 
-				    			for ($i=1; $i <= 30 ; $i++) { 
-				    				# code...
-				    				echo "<tr>".
-								            "<td><a href='?p=detalle_grupo'>Grupo $i</a></td>".
-								            "<td>Administrador</td>".
-								            "<td>05/06/2018</td>".
-								            "<td>10</td>".
-								            "<td>&euro; 200.00</td>".
-								            "<td>2 Pendientes</td>".
-								            "<td>Abierto</td>".
-								        "</tr>";
+					    			foreach($dataGrupos as  $record) { 
+					    				
+					    				?>
+					    				
+					    				<tr>
+									            <td><a href='?p=detalle_grupo'><?php echo utf8_encode($record['grupos']); ?></a></td>
+									            <td><?php echo utf8_encode($record['administrador']); ?></td>
+									            <td><?php echo $record['fecha_prim_part']; ?></td>
+									            <td><?php echo $record['cant_amigos']; ?></td>
+									            <td><?php echo MONEDA.' '. number_format($record['total_apuesta'],2); ?></td>
+									            <td>
+									            	<?php //echo $record['solicitudes']; ?>
+									            		
+										            <button type="button" data-placement="bottom" title="Aceptar" class="btn btn-success btn-sm btn-icon" data-toggle='modal' data-target='#enviarSolicitud'>
+								                    <i class="fa fa-check"></i>
+								                	</button>
+									                <button type="button" onclick="javascript:RechazarSolicitud()" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Rechazar" class="btn btn-danger btn-sm btn-icon">
+									                    <i class="fa fa-times"></i>
+									                </button>		
+								            	</td>
+									            <td><?php echo $record['estado']; ?></td>
+									        </tr>
+							<?php 
+					    			}
 				    			}
 				    		?>
 					    </tbody>
@@ -80,30 +90,29 @@
 					        </tr>
 					    </thead>
 					    <tbody>
+
+					    	<?php 
+					    		if(count($dataTopGrupos) > 0 ){ 
+					    			foreach ($dataTopGrupos as $key => $value) {
+					    			
+					    	?>
 					        <tr>
-					            <td>Grupo 4</td>
-					            <td>Jose Campos</td>
-					            <td>05/06/2018</td>
-					            <td>&euro; 10.00</td>
-					            <td>&euro; 200.00</td>
+					            <td><?php echo $value['Nombre_Grp']; ?></td>
+					            <td><?php echo $value['nombre']; ?></td>
+					            <td><?php echo $value['fecha_part']; ?></td>
+					            <td><?php echo MONEDA.' '. number_format($value['monto_apuesta'],2); ?></td>
+					            <td><?php echo MONEDA.' '. number_format($value['apuesta'],2); ?></td>
 					            <td class="td-actions text-center">
 					            	<button onclick="return false" class="btn btn-warning btn-sm" data-toggle='modal' data-target='#enviarSolicitud'>
 									  <i class="fa fa-envelope"></i> Unirse
 									</button>
 					            </td>
 					        </tr>
-					        <tr>
-					            <td>Grupo 5</td>
-					            <td>Carlos Santos</td>
-					            <td>05/06/2018</td>
-					            <td>&euro; 5.00</td>
-					            <td>&euro; 100.00</td>
-					            <td class="td-actions text-center">
-					            	<button onclick="return false" class="btn btn-warning btn-sm" data-toggle='modal' data-target='#enviarSolicitud'>
-									  <i class="fa fa-envelope"></i> Unirse
-									</button>
-					            </td>
-					        </tr>
+					        <?php 
+					    			} 
+					    		} 
+					    	?>
+
 					    </tbody>
 					</table>
 				</div>
@@ -150,15 +159,16 @@
         
         <div class="row">
         	<div class="col-sm-12 col-md-6 col-lg-6">
+        		<?php //var_dump($dataDetalle); ?>
         		<div class="form-group">
 	        		<label>Administrador del Grupo:</label>
-	        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="Juan Carlos">
+	        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="<?php echo utf8_encode($dataDetalle[0]['nombre']); ?>">
 	        	</div>
         	</div>
         	<div class="col-sm-12 col-md-6 col-lg-6">
         		<div class="form-group">
 	        		<label>Monto Total de la Apuesta:</label>
-	        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="S/. 200">
+	        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="<?php echo MONEDA.''.number_format($dataDetalle[0]['monto_apuesta']); ?>">
 	        	</div>
         	</div>
     		<div class="col-sm-12 col-md-12 col-lg-12">
@@ -180,10 +190,10 @@
 						    <tbody>
 					    		<?php 
 									
-					    			for ($i=1; $i <= 10 ; $i++) { 
+					    			foreach ($dataDetalle as $r) { 
 					    				echo "<tr>
-									            <td>Peru vs Brasil</td>
-									            <td>13/05/2018</td>
+									            <td>".utf8_encode($r['equipo_1']).' vs '. utf8_encode($r['equipo_2'])."</td>
+									            <td>".$r['fecha_part']."</td>
 									            <td>
 									            	<div class='row'>
 									            		<div class='col-md-12'>
