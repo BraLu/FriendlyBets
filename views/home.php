@@ -6,7 +6,10 @@
 
 	$dataGrupos = $objHomeController->obtenerMisGrupos();
 	$dataTopGrupos = $objHomeController->obtenerGrupoTop();
+	
 
+	$dataDetalle = $objHomeController->obtenerDetalleApuesta();
+	
 ?>
 <div class="row">
 	
@@ -161,15 +164,16 @@
         
         <div class="row">
         	<div class="col-sm-12 col-md-6 col-lg-6">
+        		<?php //var_dump($dataDetalle); ?>
         		<div class="form-group">
 	        		<label>Administrador del Grupo:</label>
-	        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="Juan Carlos">
+	        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="<?php echo utf8_encode($dataDetalle[0]['nombre']); ?>">
 	        	</div>
         	</div>
         	<div class="col-sm-12 col-md-6 col-lg-6">
         		<div class="form-group">
 	        		<label>Monto Total de la Apuesta:</label>
-	        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="S/. 200">
+	        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="<?php echo MONEDA.''.number_format($dataDetalle[0]['monto_apuesta']); ?>">
 	        	</div>
         	</div>
     		<div class="col-sm-12 col-md-12 col-lg-12">
@@ -191,10 +195,10 @@
 						    <tbody>
 					    		<?php 
 									
-					    			for ($i=1; $i <= 10 ; $i++) { 
+					    			foreach ($dataDetalle as $r) { 
 					    				echo "<tr>
-									            <td>Peru vs Brasil</td>
-									            <td>13/05/2018</td>
+									            <td>".utf8_encode($r['equipo_1']).' vs '. utf8_encode($r['equipo_2'])."</td>
+									            <td>".$r['fecha_part']."</td>
 									            <td>
 									            	<div class='row'>
 									            		<div class='col-md-12'>
