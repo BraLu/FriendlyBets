@@ -4,8 +4,8 @@ require_once "config.php";
 
 class BaseDatos
 {
-    protected $conexion;
-    protected $db;
+    public $conexion;
+    public $db;
 
     public function conectar()
     {
@@ -26,11 +26,18 @@ class BaseDatos
 
     }
 
+    public function dbconexion(){
+        
+        $mysqli = new mysqli(HOST, USER, PASS, DBNAME);
+        return $mysqli;
+    }
+
     public function pruebadb()
     {
         $tabla = "usuario";
         $query = mysql_query("SELECT * from $tabla", $this->conexion);
-        var_dump(mysql_fetch_assoc($query));
         
     }
 }
+
+?>

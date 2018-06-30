@@ -1,6 +1,10 @@
 <?php
 
 define('HOST','localhost'); 
-define('USER','fluque');
+define('USER','root');
 define('PASS','');
 define('DBNAME','friendlybets');
+define('MONEDA','S/.');
+define('IDUSUARIO',1);
+
+?>
