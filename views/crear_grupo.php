@@ -32,20 +32,20 @@
 				<div class="panel panel-default"> 
 				
 	      			<div class="form-group">
-	      				<label for="nombre_grupo">Nombre del Grupo:</label>
-	      				<input type="text" class="form-control" maxlength="100" name="nombre_grupo"/>
+	      				<label for="txt_nombre_grupo">Nombre del Grupo:</label>
+	      				<input type="text" class="form-control" maxlength="100" id="txt_nombre_grupo" name="txt_nombre_grupo"/>
 	      			</div>
 	      		
 	      			<div class="form-group">
-	      				<label for="monto_grupo">Apuesta por Persona:</label>
-	      				<input type="number" class="form-control" name="monto_grupo"/>
+	      				<label for="txt_monto_apuesta">Apuesta por Persona:</label>
+	      				<input type="number" class="form-control" id="txt_monto_apuesta" name="txt_monto_apuesta"/>
 	      			</div>
 
 	      			<div class="form-group">
 	      				<div class="form-check">
 						    <label class="form-check-label">
 						    	Grupo Abierto:
-						        <input class="form-check-input" name="abierto_grupo" type="checkbox" value="">
+						        <input class="form-check-input" id="chk_tipo_grupo" name="chk_tipo_grupo" type="checkbox" value="">
 						          
 						        <span class="form-check-sign">
 						            <span class="check"></span>
@@ -129,37 +129,35 @@
 					</div>
 			  
 				</div>
+
+				
+
+				<div class="form-group">
+					<label for="select_competencia">Competencia:</label>
+				    <select disabled="" class="form-control" id="select_competencia">
+				    </select>
+				</div>
+
 				<div class="form-group">
 					<label>Seleccionar Partidos:</label>	
 				</div>
-
 				
 				<div class="form-group">
 		      
 		            <div class="table-responsive" >
-						<table class="table table-bordered table-striped table-sm table-dark" width="100%">
+						<table id="tbl_partidos" class="table table-bordered table-striped table-sm table-dark" width="100%">
 						    <thead class="">
 						        <tr>
-						            <th>Codigo</th>
-						            <th>Partido</th>
+						        	<th hidden="">Id</th>
+						            <th>Equipo 1</th>
+						            <th>Equipo 2</th>
 						            <th>Fecha</th>
+						            <th>Hora</th>
+						            <th>Pendiente</th>
 						            <th>Marcar</th>
 						        </tr>
 						    </thead>
 						    <tbody>
-								<tr>
-						            <td>001 </td>
-						            <td>Peru vs Escocia</td>
-						            <td>Sabado 7 de Junio del 2018</td>
-						            <td><input type="checkbox" name="id1"/> </td>
-						        </tr>
-						        <tr>
-						            <td>002 </td>
-						            <td>Peru vs Dinamarca</td>
-						            <td>Sabado 14 de Junio del 2018</td>
-						            <td><input type="checkbox" name="id1"/> </td>
-						        </tr>
-						        
 						    </tbody>
 						</table>
 					</div>
@@ -262,6 +260,11 @@
 
 <script type="text/javascript">
 	
+	
+	serviceCompetencias();
+
+	servicePartidos();
+
 	var arrayAmistades = [];
 	var valueSearch = "";
 
@@ -370,7 +373,7 @@
 			              	items.push("</tr>");
 	              		}
 		              	
-	              })
+	              });
 	              tablaBody.append(items.join(''));
 	          },
 	          error: function(error) {
@@ -418,6 +421,21 @@
 
   	function guardarGrupo() {
   		// body...
+  		if($("#txt_nombre_grupo").val()=="") 
+		{
+			fbNotify('top','right','danger',"Completar el campo nombre del grupo");
+			return false;
+		}
+  		if($("#txt_monto_apuesta").val()=="") 
+  		{
+  			fbNotify('top','right','danger',"Completar el campo monto de la apuesta");
+  			return false;
+  		}
+  		if(arrayAmistades.length==0) 
+  		{
+  			fbNotify('top','right','danger',"No tienes ninguna amistad seleccionada.");
+  			return false;
+		}
 		swal({
 		  title: 'Guardar Grupo?',
 		  text: "Si desea valida la información!",
@@ -434,12 +452,164 @@
 		      'Espere la confirmación de sus amistades.',
 		      'success'
 		    ).then((result) => {
-	    		location='security/iniciar_session.php';
+	    		fbShowLoading();
+	    		var check = "A";
+	    		if ($("#chk_tipo_grupo").is(':checked')) check = "C";
+	    		//Amigos Seleccionados
+	    		var arrayAmigos = [];
+	    		$('#tbl_amigos_apuesta tbody tr').each(function () {
+					var id = $(this).find("td").eq(0).html();
+					var pago = "N"
+					if ($("#pago-check-"+id).is(':checked')) {
+						pago = "S";
+					}
+					var obj = {
+							    p_Usr: id,
+							    p_Pago: pago 
+							  };
+					  	arrayAmigos.push(obj);
+				});
+
+	    		//Partidos Seleccionados
+	    		var arrayPartidos = [];
+	    		$('#tbl_partidos tbody tr').each(function () {
+					var id = $(this).find("td").eq(0).html();
+					if ($("#partido-"+id+"").is(':checked')) {
+						var Equipo1 = $(this).find("td").eq(1).html();
+						var Equipo2 = $(this).find("td").eq(2).html();
+						var Fecha = $(this).find("td").eq(3).html();
+						var date = new Date(Fecha);
+						var Hora = $(this).find("td").eq(4).html();
+						var obj = {
+								    p_Equipo1: Equipo1,
+								    p_Equipo2: Equipo2,
+								    p_Fecha: date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(),
+								    p_Hora: Hora,
+								  };
+					  	arrayPartidos.push(obj);
+					  }
+				});
+
+	    		var p_grupo = {
+    				p_Nombregrupo : $("#txt_nombre_grupo").val(),
+    				p_MontoApuesta : parseInt($("#txt_monto_apuesta").val()),
+    				p_TipoGrupo : check,
+    				Amigos : arrayAmigos,
+    				Partidos : arrayPartidos
+	    		}
+
+	    		$.ajax({
+			          type: 'POST',
+			          url: 'controllers/usuario_controller.php',
+			          //dataType: 'json',
+			          //contentType: 'application/json',
+			          data: { action : "crearGrupo", 
+			          		  grupo : p_grupo
+			          		},
+			          success: function(response) {
+			          		console.log(JSON.parse(response));
+			          		fbHideLoading();
+			          		$.each( JSON.parse(response), function( key, val ) {
+							    if(val.status==400){
+						    		fbNotify('top','right','danger',val.message);
+							    }else if(val.status==200){
+							    	fbNotify('top','right','success',val.message);
+							    	location='security/iniciar_session.php';
+							    }
+							});
+			          },
+			          error: function(error) {
+			              console.log(error);
+			              fbHideLoading();
+			          }
+			    });
+
+
+	    		
+	    		console.log(p_grupo);
 		    });
 		  }else{
 		  	//$("#enviarSolicitud").modal('show');
 		  }
 		});
+  	}
+
+  	function servicePartidos() {
+  		// body...
+  		var tabla = $('#tbl_partidos'),
+                tablaBody = $('#tbl_partidos tbody'),
+                tablaHead = $('#tbl_partidos thead');
+  		$.ajax({
+	          type: 'POST',
+	          url: 'controllers/usuario_controller.php',
+	          //dataType: 'json',
+	          //contentType: 'application/json',
+	          data: { action : "servicePartidos", filter_id: /*$("#select_competencia").val()*/ 467 },
+	          success: function(response) {
+	          		tablaBody.empty();
+	          		var items=new Array();
+	          		var rs = JSON.parse(response);
+	          		//console.log(new Date(rs.fixtures[0].date));
+	          		for (var i = 0; i < rs.count; i++) {
+          				if (rs.fixtures[i].status != "FINISHED") {
+          					items.push(rs.fixtures[i]);
+          				}
+          			}
+          			//console.log(items);
+	          		$.each(items,function (key,val) {
+	              		// body...
+	              		if (val.status != "FINISHED") {
+              				var status = "";
+		              		items.push("<tr>");
+		              		items.push("<td hidden>"+ val.awayTeamName + val.homeTeamName  + "</td>");
+		              		items.push("<td>"+ val.awayTeamName +"</td>");
+			              	items.push("<td>"+ val.homeTeamName +"</td>");
+			              	var fecha = new Date(val.date);
+							items.push("<td>"+fecha.toLocaleDateString("en-GB")+"</td>");
+							items.push("<td>"+fecha.toLocaleTimeString("en-GB")+"</td>");
+				              	if (val.status=="TIMED") {
+			              			items.push("<td>PENDIENTE</td>");
+			              			items.push("<td>"+"<input type='checkbox' id='partido-"+val.awayTeamName+val.homeTeamName+"'/></td>");
+				              	}else{
+			              			items.push("<td>EN DEFINICIÓN</td>");
+			              			items.push("<td></td>");
+				              	}
+
+			              	items.push("</tr>");
+	              		}
+	              	});
+          			tablaBody.append(items.join(''));
+	          },
+	          error: function(error) {
+	              console.log(error);
+	          }
+	    });		
+  	}
+
+  	function serviceCompetencias() {
+  		// body...
+  		$.ajax({
+	          type: 'POST',
+	          url: 'controllers/usuario_controller.php',
+	          //dataType: 'json',
+	          //contentType: 'application/json',
+	          data: { action : "serviceCompetencias", 
+	          		  filter_anio : (new Date).getFullYear()
+	          		},
+	          success: function(response) {
+	          		var rs = JSON.parse(response);
+	          		$("#select_competencia").empty();
+	          		var items=new Array();
+	          		$.each(rs,function (key,val) {
+	              	// body...
+		              	items.push("<option id='"+val.id+"'>"+val.caption+"</option>");
+	              	});
+	              	$("#select_competencia").append(items.join(''));
+	          },
+	          error: function(error) {
+	              console.log(error);
+	          }
+	    });		
   	}
 
 </script>

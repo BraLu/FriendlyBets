@@ -140,8 +140,8 @@
                               //contentType: 'application/json',
                               data: {value : rs},
                             success: function(response){
-                              console.log("success");
-                              console.log(response);
+                              //console.log("success");
+                              //console.log(response);
                               location='security/iniciar_session.php';
                             },
                           error: function(xerror){
@@ -207,11 +207,6 @@
                     fbHideLoading();
                     fbNotify('top','right','danger', jqXHR.responseJSON.message);
                 }
-                //console.log(jqXHR);
-                //console.log(textStatus);
-                //console.log(errorThrown);
-                //fbNotify('top','right','danger', status + ' - ' + err);
-                //console.log(JSON.stringify(error))
               }
         }); 
       }else{
