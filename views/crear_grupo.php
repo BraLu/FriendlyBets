@@ -455,6 +455,7 @@
 	    		fbShowLoading();
 	    		var check = "C";
 	    		if ($("#chk_tipo_grupo").is(':checked')) check = "A";
+
 	    		//Amigos Seleccionados
 	    		var arrayAmigos = [];
 	    		$('#tbl_amigos_apuesta tbody tr').each(function () {
@@ -575,6 +576,7 @@
 				              	{
 				              		items.push("<td>EN JUEGO</td>");
 			              			items.push("<td></td>");
+
 				              	}else{
 			              			items.push("<td>EN DEFINICIÓN</td>");
 			              			items.push("<td></td>");

@@ -27,9 +27,9 @@ class BaseDatos
     }
 
     public function dbconexion(){
-    	
-    	$mysqli = new mysqli(HOST, USER, PASS, DBNAME);
-    	return $mysqli;
+        
+        $mysqli = new mysqli(HOST, USER, PASS, DBNAME);
+        return $mysqli;
     }
 
     public function pruebadb()
