@@ -1,15 +1,3 @@
-<?php 
-  require 'models/conexion.php'; 
-
-  $db = new BaseDatos();
-
-  if($db->conectar()){
-      $db->pruebadb();
-      $db->desconectar();
-  }
-
-?>
-
 <div class="row">
     <div class="col-md-5 frm-login" >
       <div class="card">
@@ -140,11 +128,26 @@
                 url: 'https://friendlybets-fluque.c9users.io:8081/api/usuario/'+username+'/'+password,
                 dataType: 'json',
                 contentType: 'application/json',
-                success: function(response) {
+                success: function(rs) {
                     /*console.log(JSON.stringify(response));*/
                     /*console.log(response);*/
-                    if (response==1) {
-                        location='security/iniciar_session.php';
+                    if (rs!=0) {
+                        console.log("success");
+                        $.ajax({
+                              type: 'POST',
+                              url: 'security/var_session.php',
+                              //dataType: 'json',
+                              //contentType: 'application/json',
+                              data: {value : rs},
+                            success: function(response){
+                              //console.log("success");
+                              //console.log(response);
+                              location='security/iniciar_session.php';
+                            },
+                          error: function(xerror){
+                              fbNotify('top','right','danger',xerror);
+                          }
+                        });
                     }else{
                       fbHideLoading();
                       fbNotify('top','right','danger','Usuario y/o Password Incorrectos.');
@@ -152,7 +155,12 @@
                 },
                 error: function(error) {
                     fbHideLoading();
-                    fbNotify('top','right','danger',error);
+                    if (error.status ==500) {
+                        fbNotify('top','right','danger',"Usuario y/o Password Incorrectos.");
+                    }else{
+                      fbNotify('top','right','danger',error.responseJSON.message);
+                    }
+                    //console.log(error);
                     /*console.log(error);*/
                 }
           });
@@ -199,11 +207,6 @@
                     fbHideLoading();
                     fbNotify('top','right','danger', jqXHR.responseJSON.message);
                 }
-                //console.log(jqXHR);
-                //console.log(textStatus);
-                //console.log(errorThrown);
-                //fbNotify('top','right','danger', status + ' - ' + err);
-                //console.log(JSON.stringify(error))
               }
         }); 
       }else{

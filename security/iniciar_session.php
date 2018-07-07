@@ -1,5 +1,7 @@
 <?php
 	session_start();
-	$_SESSION["session"] = "amamani";
+
+	//$_SESSION["session"] = 0;
+
 	header("Location:../index.php");
 ?>
