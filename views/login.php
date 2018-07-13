@@ -124,24 +124,20 @@
       fbShowLoading();
       if ((username.length > 0) && (password.length > 0)) {   
           $.ajax({
-                type: 'GET',
-                url: 'https://friendlybets-fluque.c9users.io:8081/api/usuario/'+username+'/'+password,
-                dataType: 'json',
-                contentType: 'application/json',
+                type: 'POST',
+                url: 'controllers/usuario_controller.php',
+                //dataType: 'json',
+                //contentType: 'application/json',
+                data: { action : "getAcceso", email : username, password :  password },
                 success: function(rs) {
-                    /*console.log(JSON.stringify(response));*/
-                    /*console.log(response);*/
+                  //console.log(rs);
                     if (rs!=0) {
-                        console.log("success");
+                        //console.log("success");
                         $.ajax({
                               type: 'POST',
                               url: 'security/var_session.php',
-                              //dataType: 'json',
-                              //contentType: 'application/json',
                               data: {value : rs},
                             success: function(response){
-                              //console.log("success");
-                              //console.log(response);
                               location='security/iniciar_session.php';
                             },
                           error: function(xerror){
@@ -186,27 +182,35 @@
 
         $.ajax({
               type: 'POST',
-              url: 'https://friendlybets-fluque.c9users.io:8081/api/usuario',
-              dataType: 'json',
-              contentType: 'application/json',
-              data: JSON.stringify(user),
+              url: 'controllers/usuario_controller.php',
+              //dataType: 'json',
+              //contentType: 'application/json',
+              data: { action : "serviceRegistrar", user :JSON.stringify(user) },
               success: function(response) {
+                  var jqXHR = JSON.parse(response);
+                  //console.log(JSON.parse(response));
                   //console.log(JSON.stringify(response));
-                  location='index.php';
-              },
-              error: function( jqXHR, textStatus, errorThrown ) {
 
                 if (jqXHR.status == 400) {
                     fbHideLoading();
-                    for (var i = 0; i < jqXHR.responseJSON.errors.length; i++) {
-                      fbNotify('top','right','danger', jqXHR.responseJSON.errors[i].defaultMessage);
+                    for (var i = 0; i < jqXHR.errors.length; i++) {
+                      fbNotify('top','right','danger', jqXHR.errors[i].defaultMessage);
                     }
                 }
+
                 if (jqXHR.status == 500) {
                     //console.log(jqXHR);
                     fbHideLoading();
-                    fbNotify('top','right','danger', jqXHR.responseJSON.message);
+                    fbNotify('top','right','danger', jqXHR.message);
                 }
+
+                if (jqXHR.email == $("#email").val()) {
+                    location='index.php';
+                }
+
+              },
+              error: function( jqXHR, textStatus, errorThrown ) {
+                console.log(jqXHR);
               }
         }); 
       }else{

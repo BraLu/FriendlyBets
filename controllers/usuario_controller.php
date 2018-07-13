@@ -20,6 +20,21 @@ elseif ($_POST["action"]=="crearAmistad") {
 }elseif ($_POST["action"]=="crearGrupo") {
 	# code...
 	crearGrupo();
+}elseif ($_POST["action"]=="getAcceso") {
+	# code...
+	serviceAcceso();
+}elseif ($_POST["action"]=="serviceRegistrar") {
+	# code...
+	serviceRegistrar();
+}elseif ($_POST["action"]=="getByDetallePendienteGrupo") {
+	# code...
+	getByDetallePendienteGrupo();
+}elseif ($_POST["action"]=="getByDetallePendienteUsuarios") {
+	# code...
+	getByDetallePendienteUsuarios();
+}elseif ($_POST["action"]=="getByDetallePendientePartidos") {
+	# code...
+	getByDetallePendientePartidos();
 }
 
 function getByUsuario(){
@@ -117,24 +132,21 @@ function crearGrupo()
  		$user=new usuario_model();
  		$response1=$user->crearPartido($equipo1,$equipo2,$fecha,$hora);	
  		$idPartido = $response1["Id_Partido"];
+ 		//echo json_encode($idPartido);
 
- 		/*Insertamos los Amigos*/
  		
- 		if ($add) 
- 		{
- 			# code...
- 			$user=new usuario_model();
- 			$response2=$user->crearApuesta($idGrp,$_SESSION["session"],$idPartido,"S");	
- 			$add=false;
- 		}
-
+ 		/*Insertamos al Administrador*/
+		$user=new usuario_model();
+		$response2=$user->crearApuesta($idGrp,$_SESSION["session"],$idPartido,"S","Aceptado");	
+		
+		/*Insertamos los Amigos*/
 		$arrayAmigos = $grupo["Amigos"];
 		foreach($arrayAmigos as $amigo)
 		{
 			$usr = $amigo["p_Usr"];
 			$pago = $amigo["p_Pago"];
 			$user=new usuario_model();
-			$response3=$user->crearApuesta($idGrp,$usr,$idPartido,$pago);	
+			$response3=$user->crearApuesta($idGrp,$usr,$idPartido,$pago,"Pendiente");	
 		}
 	}
 
@@ -202,6 +214,102 @@ function serviceCompetencias()
 	} else {
 	  echo $response;
 	}
+}
+
+function serviceAcceso()
+{
+	# code...
+	$curl = curl_init();
+
+	//$url = "http://localhost";
+	$url = "https://friendlybets-fluque.c9users.io";
+
+	curl_setopt_array($curl, array(
+	  CURLOPT_PORT => "8081",
+	  CURLOPT_URL => $url.":8081/api/usuario/".$_POST["email"]."/".$_POST["password"],
+	  CURLOPT_RETURNTRANSFER => true,
+	  CURLOPT_ENCODING => "",
+	  CURLOPT_MAXREDIRS => 10,
+	  CURLOPT_TIMEOUT => 30,
+	  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	  CURLOPT_CUSTOMREQUEST => "GET",
+	  CURLOPT_HTTPHEADER => array(
+	    "cache-control: no-cache",
+	    "postman-token: b8de9446-463a-6705-f50d-cd26a0653809"
+	  ),
+	));
+
+	$response = curl_exec($curl);
+	$err = curl_error($curl);
+
+	curl_close($curl);
+
+	if ($err) {
+	  echo "cURL Error #:" . $err;
+	} else {
+	  echo $response;
+	}
+}
+
+function serviceRegistrar()
+{
+	# code...
+	$curl = curl_init();
+
+	//$url = "http://localhost";
+	$url = "https://friendlybets-fluque.c9users.io";
+
+	curl_setopt_array($curl, array(
+	  CURLOPT_PORT => "8081",
+	  CURLOPT_URL => $url.":8081/api/usuario",
+	  CURLOPT_RETURNTRANSFER => true,
+	  CURLOPT_ENCODING => "",
+	  CURLOPT_MAXREDIRS => 10,
+	  CURLOPT_TIMEOUT => 30,
+	  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	  CURLOPT_CUSTOMREQUEST => "POST",
+	  CURLOPT_POSTFIELDS => $_POST["user"],
+	  CURLOPT_HTTPHEADER => array(
+	    "cache-control: no-cache",
+	    "content-type: application/json",
+	    "postman-token: df0fe04c-296f-e2df-22fc-c3c5b87d496b"
+	  ),
+	));
+
+	$response = curl_exec($curl);
+	$err = curl_error($curl);
+
+	curl_close($curl);
+
+	if ($err) {
+	  echo "cURL Error #:" . $err;
+	} else {
+	  echo $response;
+	}
+}
+
+function getByDetallePendienteGrupo(){
+	include("../models/usuario.php");
+	$user=new usuario_model();
+	$datos=$user->getByDetallePendienteGrupo($_POST["id_Grp"]);
+	$json_string = json_encode($datos);
+	echo $json_string;
+}
+
+function getByDetallePendienteUsuarios(){
+	include("../models/usuario.php");
+	$user=new usuario_model();
+	$datos=$user->getByDetallePendienteUsuarios($_POST["id_Grp"],$_SESSION["session"]);
+	$json_string = json_encode($datos);
+	echo $json_string;
+}
+
+function getByDetallePendientePartidos(){
+	include("../models/usuario.php");
+	$user=new usuario_model();
+	$datos=$user->getByDetallePendientePartidos($_POST["id_Grp"]);
+	$json_string = json_encode($datos);
+	echo $json_string;
 }
 
 ?>

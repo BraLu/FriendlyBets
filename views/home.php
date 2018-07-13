@@ -25,10 +25,10 @@
 					    <thead class="">
 					        <tr>
 					            <th>Grupos</th>
-					            <th>Administrador</th>
+					            <th>Tipo</th>
 					            <th>Fecha 1° Partido</th>
 					            <th>Cant. Amigos</th>
-					            <th>Total de Apuesta</th>
+					            <th>Apuesta</th>
 					            <th>Solicitudes</th>
 					            <th>Estado</th>
 					        </tr>
@@ -48,9 +48,16 @@
 									            <td><?php echo $record['fecha_prim_part']; ?></td>
 									            <td><?php echo $record['cant_amigos']; ?></td>
 									            <td><?php echo MONEDA.' '. number_format($record['total_apuesta'],2); ?></td>
-									            <td>
-									            	<?php //echo $record['solicitudes']; ?>
-									            		
+									            <?php 
+									            	if ($record['administrador']=="Administrador") {
+									            ?>
+									            
+									            <td><a href="?p=actualizar_grupo&c=<?php echo $record['Id_Grp']; ?>"><?php echo $record['solicitudes']; ?></a> </td>
+
+								            	<?php }else {
+
+								            	 ?>
+							            		<td>	
 										            <button type="button" data-placement="bottom" title="Aceptar" class="btn btn-success btn-sm btn-icon" data-toggle='modal' data-target='#enviarSolicitud'>
 								                    <i class="fa fa-check"></i>
 								                	</button>
@@ -58,6 +65,9 @@
 									                    <i class="fa fa-times"></i>
 									                </button>		
 								            	</td>
+							            		<?php } ?>
+
+
 									            <td><?php echo $record['estado']; ?></td>
 									        </tr>
 							<?php 

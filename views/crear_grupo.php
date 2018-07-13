@@ -66,10 +66,10 @@
   		
 		  		<div class="form-inline">
 				   
-				    <button type="button" title="Nuevo Amigo" style="" class="btn btn-info btn-new-amigo" data-toggle='modal' data-target='#m_lista_amigos' onclick="javascript:listarAmistades();" >
+				    <button type="button" style="" id="btn_Lista_Amigos" class="btn btn-info btn-new-amigo" data-toggle='modal' data-target='#m_lista_amigos' onclick="javascript:listarAmistades();" >
 							                    <i class="fa fa-search"></i> Buscar Amigos
 							                </button>
-				    <button type="button" title="Nuevo Amigo" style="margin-left: 5px" class="btn btn-primary btn-new-amigo" data-toggle='modal' data-target='#m_nuevo_amigo' >
+				    <button type="button" style="margin-left: 5px" id="btn_Nuevo_Amigo" class="btn btn-primary btn-new-amigo" data-toggle='modal' data-target='#m_nuevo_amigo' >
 							                    <i class="fa fa-plus"></i> Nuevo Amigo
 							                </button>
 				</div>
@@ -89,41 +89,6 @@
 						        </tr>
 						    </thead>
 						    <tbody>
-						    	<!--
-								<tr>
-									<td hidden="">1</td>
-						            <td>Angel Mamani </td>
-						            <td>amamani@gmail.com</td>
-						            <td>Pendiente</td>
-						            <td><input type="checkbox" name="id1"/> </td>
-						            <td><button type="button" title="Remover" class="btn btn-danger btn-sm btn-icon">
-					                    <i class="fa fa-times fa-sm"></i>
-					                	</button>
-					            	</td>
-						        </tr>
-						        <tr>
-						        	<td hidden="">2</td>
-						            <td >Carlos Santos </td>
-						            <td>csantos@gmail.com</td>
-						            <td>Aceptado</td>
-						            <td><input type="checkbox" name="id2"/></td>
-						            <td><button type="button" title="Remover" class="btn btn-danger btn-sm btn-icon">
-					                    <i class="fa fa-times fa-sm"></i>
-					                	</button>
-					            	</td>
-						        </tr>
-						        <tr>
-						        	<td hidden="">3</td>
-						            <td>Fernando </td>
-						            <td>fluque@gmail.com</td>
-						            <td>Solicitado</td>
-						            <td><input type="checkbox" name="id3"/> </td>
-						            <td><button type="button" title="Remover" class="btn btn-danger btn-sm btn-icon">
-					                    <i class="fa fa-times fa-sm"></i>
-					                	</button>
-					            	</td>
-						        </tr>
-						    	-->
 						    </tbody>
 						</table>
 					</div>
@@ -163,16 +128,15 @@
 					</div>
 			  
 				</div>
-		  		
-		  		<!--<button type="button" class="btn btn-danger">Cancelar</button>-->
+
 		  	</div>
 
 		  	<div class="col-md-12">
 		  		<div class="form-group">
 		  			
 			  		<button type="button" onclick="javascript:guardarGrupo();" class="btn btn-success btn-size-grupo" style="width: 150px; float: right;">Guardar</button>	
-		      		<button type="button" class="btn btn-info btn-size-grupo" disabled="" style="width: 150px; float: right;">Puntaje</button>
-		      		<button type="button" class="btn btn-danger btn-size-grupo" disabled="" style="width: 150px; float: right;">Eliminar Grupo</button>
+		      		<button type="button" class="btn btn-info btn-size-grupo" id="btn_puntaje" style="width: 150px; float: right;">Puntaje</button>
+		      		<!--<button type="button" class="btn btn-danger btn-size-grupo" disabled="" style="width: 150px; float: right;">Eliminar Grupo</button>-->
 
 			  	</div>
 		  	</div>
@@ -260,13 +224,162 @@
 
 <script type="text/javascript">
 	
-	
+	var arrayAmistades = [];
+	var valueSearch = "";
+
+	var accion_view = $("#accion_grupo").val();
+	var bool_accion_view = $("#accion_grupo").val()=="create_grupo"?true:false;
+	console.log(accion_view);
+
 	serviceCompetencias();
 
 	servicePartidos();
 
-	var arrayAmistades = [];
-	var valueSearch = "";
+	if (accion_view == "create_grupo") {
+		$("#btn_puntaje").attr("disabled","disabled");
+	}else{
+		var accion_view_id = $("#accion_grupo_id").val();
+		//console.log(accion_view_id);
+		$("#txt_nombre_grupo").attr("disabled","disabled");
+		//$("#txt_monto_apuesta").attr("disabled","disabled");
+		$("#chk_tipo_grupo").attr("disabled","disabled");
+		$("#btn_Lista_Amigos").css("display","none");
+		$("#btn_Nuevo_Amigo").css("display","none");
+
+		var tablap = $('#tbl_partidos'),
+                tablaBodyp = $('#tbl_partidos tbody'),
+                tablaHeadp = $('#tbl_partidos thead');
+
+        var tablaa = $('#tbl_amigos_apuesta'),
+                tablaBodya = $('#tbl_amigos_apuesta tbody'),
+                tablaHeada = $('#tbl_amigos_apuesta thead');
+
+		$.ajax({
+	          type: 'POST',
+	          url: 'controllers/usuario_controller.php',
+	          //dataType: 'json',
+	          //contentType: 'application/json',
+	          data: { action : "getByDetallePendienteGrupo", id_Grp: accion_view_id },
+	          success: function(response) {
+	          	console.log(JSON.parse(response));
+	          		//datos principales
+	          		$.each(JSON.parse(response),function (key,val) {
+	          			$("#txt_nombre_grupo").val(val.Nombre_Grp);
+						$("#txt_monto_apuesta").val(val.Monto_Apuesta);
+						if (val.Sts_Grp == "Abierto") {
+							$("#chk_tipo_grupo").attr("checked","checked");
+						}
+						
+	          		});	
+
+
+
+	          		/*tablaBody.empty();
+	          		var items=new Array();
+          			//console.log(items);
+	          		$.each(items,function (key,val) {
+	              		// body...
+	              		if (val.status != "FINISHED") {
+              				var status = "";
+		              		items.push("<tr>");
+		              		items.push("<td hidden>"+ val.awayTeamName + val.homeTeamName  + "</td>");
+		              		items.push("<td>"+ val.awayTeamName +"</td>");
+			              	items.push("<td>"+ val.homeTeamName +"</td>");
+			              	var fecha = new Date(val.date);
+							items.push("<td>"+fecha.toLocaleDateString("en-GB")+"</td>");
+							items.push("<td>"+fecha.toLocaleTimeString("en-GB")+"</td>");
+				              	if (val.status=="TIMED") {
+			              			items.push("<td>PENDIENTE</td>");
+			              			items.push("<td>"+"<input type='checkbox' id='partido-"+val.awayTeamName+val.homeTeamName+"'/></td>");
+				              	}
+				              	else if(val.status=="IN_PLAY")
+				              	{
+				              		items.push("<td>EN JUEGO</td>");
+			              			items.push("<td></td>");
+
+				              	}else{
+			              			items.push("<td>EN DEFINICIÓN</td>");
+			              			items.push("<td></td>");
+				              	}
+
+			              	items.push("</tr>");
+	              		}
+	              	});
+          			tablaBody.append(items.join(''));*/
+	          },
+	          error: function(error) {
+	              console.log(error);
+	          }
+	    	});
+
+		$.ajax({
+	          type: 'POST',
+	          url: 'controllers/usuario_controller.php',
+	          //dataType: 'json',
+	          //contentType: 'application/json',
+	          data: { action : "getByDetallePendienteUsuarios", id_Grp: accion_view_id },
+	          success: function(response) {
+	          	console.log(JSON.parse(response));
+	          		//datos usuarios
+	          		tablaBodya.empty();
+	          		var items1=new Array();
+          			//console.log(items);
+	          		$.each(JSON.parse(response),function (key,val) {
+	              		// body...
+	              		items1.push("<tr>");
+			              	items1.push("<td hidden>"+val.Id_Usr+"</td>");
+			              	items1.push("<td>"+val.Nombre+" " +val.Apellidos+"</td>");
+			              	items1.push("<td>"+val.email+"</td>");
+			              	items1.push("<td>"+val.Sts_Solicitud_Usr+"</td>");
+			              	if (val.Ind_Pago=="N") {
+		              			items1.push("<td>"+"<input type='checkbox' id='add-check-"+val.Id_Usr+"'/> "+"</td>");
+			              	}else{
+			              		items1.push("<td>"+"<input type='checkbox' checked id='add-check-"+val.Id_Usr+"'/> "+"</td>");
+			              	}
+			              	items1.push("</tr>");
+	              	});
+          			tablaBodya.append(items1.join(''));
+	          },
+	          error: function(error) {
+	              console.log(error);
+	          }
+    	});
+
+    	$.ajax({
+	          type: 'POST',
+	          url: 'controllers/usuario_controller.php',
+	          //dataType: 'json',
+	          //contentType: 'application/json',
+	          data: { action : "getByDetallePendientePartidos", id_Grp: accion_view_id },
+	          success: function(response) {
+	          	console.log(JSON.parse(response));
+	          		//datos principales
+
+	          		tablaBodyp.empty();
+	          		var items2=new Array();
+          			//console.log(items);
+	          		$.each(JSON.parse(response),function (key,val) {
+	              		// body...
+	              		items2.push("<tr>");
+	              		items2.push("<td hidden>"+ val.Equipo_1 + val.Equipo_2  + "</td>");
+	              		items2.push("<td>"+ val.Equipo_1 +"</td>");
+		              	items2.push("<td>"+ val.Equipo_2 +"</td>");
+		              	//var fecha = new Date(val.date);
+						items2.push("<td>"+val.Fecha_Part+"</td>");
+						items2.push("<td>"+val.Hora_Part+"</td>");
+              			items2.push("<td>"+val.Sts_part+"</td>");
+              			items2.push("<td></td>");
+
+		              	items2.push("</tr>");
+	              	});
+          			tablaBodyp.append(items2.join(''));
+	          },
+	          error: function(error) {
+	              console.log(error);
+	          }
+	    	});
+
+	}
 
 	function amistadesSeleccionadas(){
 		var count=0;
@@ -508,7 +621,7 @@
 			          		  grupo : p_grupo
 			          		},
 			          success: function(response) {
-			          		console.log(JSON.parse(response));
+			          		//console.log(JSON.parse(response));
 			          		fbHideLoading();
 			          		$.each( JSON.parse(response), function( key, val ) {
 							    if(val.status==400){
@@ -540,7 +653,9 @@
   		var tabla = $('#tbl_partidos'),
                 tablaBody = $('#tbl_partidos tbody'),
                 tablaHead = $('#tbl_partidos thead');
-  		$.ajax({
+  		
+  		if (bool_accion_view) {
+  			$.ajax({
 	          type: 'POST',
 	          url: 'controllers/usuario_controller.php',
 	          //dataType: 'json',
@@ -590,7 +705,8 @@
 	          error: function(error) {
 	              console.log(error);
 	          }
-	    });		
+	    	});	
+  		}
   	}
 
   	function serviceCompetencias() {
