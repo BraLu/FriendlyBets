@@ -4,10 +4,10 @@
     Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
 -->
   <div class="logo">
-    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+    <a href="http://friendlybets-fluque.c9users.io/proyectpg/FriendlyBets/" class="simple-text logo-mini">
       FB
     </a>
-    <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+    <a href="http://friendlybets-fluque.c9users.io/proyectpg/FriendlyBets/" class="simple-text logo-normal">
       Friendly Bets
     </a>
   </div>

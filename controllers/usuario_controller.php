@@ -12,6 +12,14 @@ if ($_POST["action"]=="getByUsuario"){
 elseif ($_POST["action"]=="crearAmistad") {
 	# code...
 	crearAmistad();
+}elseif ($_POST["action"]=="servicePartidos") {
+	# code...
+	servicePartidos();
+}elseif($_POST["action"]=="serviceCompetencias"){
+	serviceCompetencias();
+}elseif ($_POST["action"]=="crearGrupo") {
+	# code...
+	crearGrupo();
 }
 
 function getByUsuario(){
@@ -80,6 +88,120 @@ function crearAmistad(){
 
     }
 		
+}
+
+function crearGrupo()
+{
+	# code...
+	include("../models/usuario.php");
+	
+	$grupo = $_POST["grupo"];
+	$nombreGrupo = $grupo["p_Nombregrupo"];
+	$montoApuesta = $grupo["p_MontoApuesta"];
+	$tipoGrupo = $grupo["p_TipoGrupo"];
+
+	$user=new usuario_model();
+	/*Insertamos el Grupo*/
+	$response=$user->crearGrupo($nombreGrupo,$_SESSION["session"],$montoApuesta,$tipoGrupo);	
+	$idGrp = $response["Id_Grp"];
+
+	/*Insertamos los Partidos*/
+	$arrayPartidos = $grupo["Partidos"];
+	$add = true;
+	foreach($arrayPartidos as $partido)
+	{
+ 		$equipo1 = $partido["p_Equipo1"];
+ 		$equipo2 = $partido["p_Equipo2"];
+ 		$fecha = $partido["p_Fecha"];
+ 		$hora = $partido["p_Hora"];
+ 		$user=new usuario_model();
+ 		$response1=$user->crearPartido($equipo1,$equipo2,$fecha,$hora);	
+ 		$idPartido = $response1["Id_Partido"];
+
+ 		/*Insertamos los Amigos*/
+ 		
+ 		if ($add) 
+ 		{
+ 			# code...
+ 			$user=new usuario_model();
+ 			$response2=$user->crearApuesta($idGrp,$_SESSION["session"],$idPartido,"S");	
+ 			$add=false;
+ 		}
+
+		$arrayAmigos = $grupo["Amigos"];
+		foreach($arrayAmigos as $amigo)
+		{
+			$usr = $amigo["p_Usr"];
+			$pago = $amigo["p_Pago"];
+			$user=new usuario_model();
+			$response3=$user->crearApuesta($idGrp,$usr,$idPartido,$pago);	
+		}
+	}
+
+	$respuesta[] = array("status"=>200,"message"=>"Se registro correctamente.");
+	echo json_encode($respuesta);
+}
+
+function servicePartidos()
+{
+	# code...
+	$curl = curl_init();
+
+	curl_setopt_array($curl, array(
+	  CURLOPT_URL => "http://api.football-data.org/v1/competitions/".$_POST["filter_id"]."/fixtures",
+	  CURLOPT_RETURNTRANSFER => true,
+	  CURLOPT_ENCODING => "",
+	  CURLOPT_MAXREDIRS => 10,
+	  CURLOPT_TIMEOUT => 30,
+	  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	  CURLOPT_CUSTOMREQUEST => "GET",
+	  CURLOPT_HTTPHEADER => array(
+	    "cache-control: no-cache",
+	    "postman-token: 8b3f351f-9422-3249-073c-153b02a2032b"
+	  ),
+	));
+
+	$response = curl_exec($curl);
+	$err = curl_error($curl);
+
+	curl_close($curl);
+
+	if ($err) {
+	  echo "cURL Error #:" . $err;
+	} else {
+	  echo $response;
+	}
+}
+
+function serviceCompetencias()
+{
+	# code...
+	$curl = curl_init();
+
+	curl_setopt_array($curl, array(
+	  CURLOPT_URL => "http://api.football-data.org/v1/competitions/?season=".$_POST["filter_anio"],
+	  CURLOPT_RETURNTRANSFER => true,
+	  CURLOPT_ENCODING => "",
+	  CURLOPT_MAXREDIRS => 10,
+	  CURLOPT_TIMEOUT => 30,
+	  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	  CURLOPT_CUSTOMREQUEST => "GET",
+	  CURLOPT_HTTPHEADER => array(
+	    "cache-control: no-cache",
+	    "postman-token: f58c5939-4d2d-4d18-dfd7-56865440cdf0"
+	  ),
+	));
+
+	$response = curl_exec($curl);
+	$err = curl_error($curl);
+
+	curl_close($curl);
+
+	if ($err) {
+	  echo "cURL Error #:" . $err;
+	} else {
+	  echo $response;
+	}
 }
 
 ?>

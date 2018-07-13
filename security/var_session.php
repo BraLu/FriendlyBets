@@ -5,4 +5,5 @@
         $_SESSION["session"] = $value;
     }
     echo $_SESSION["session"];
+
 ?>
