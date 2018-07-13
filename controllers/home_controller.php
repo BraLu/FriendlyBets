@@ -14,7 +14,7 @@
 
     			$objGrupo = new grupo_model();
 
-	    		$data = $objGrupo->obtenerMisGrupos(IDUSUARIO);
+	    		$data = $objGrupo->obtenerMisGrupos($_SESSION["session"]);
 
 	    		return $data;
 
@@ -30,7 +30,7 @@
 
     			$objGrupo = new grupo_model();
 
-	    		$data = $objGrupo->obtenerGruposTop();
+	    		$data = $objGrupo->obtenerGruposTop($_SESSION["session"]);
 
 	    		return $data;
 
