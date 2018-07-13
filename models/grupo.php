@@ -29,13 +29,13 @@
         
     }
 
-	public function obtenerGruposTop(){
+	public function obtenerGruposTop($idUsuario){
 
     	try {
     		
     		$response = array();
 
-    		$consulta= $this->db->query("CALL sp_top_grupo()");
+    		$consulta= $this->db->query("CALL sp_top_grupo(".$idUsuario.")");
 	        while($filas=$consulta->fetch_assoc()){
 	            $response[]=$filas;
 	        }
