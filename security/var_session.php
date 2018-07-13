@@ -6,4 +6,4 @@
     }
     echo $_SESSION["session"];
 
-?>
+?>clear

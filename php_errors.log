@@ -1,0 +1,5 @@
+[09-Jul-2018 17:33:03 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 46
+[09-Jul-2018 17:33:03 UTC] PHP Stack trace:
+[09-Jul-2018 17:33:03 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[09-Jul-2018 17:33:03 UTC] PHP   2. crearGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:22
+[09-Jul-2018 17:33:03 UTC] PHP   3. usuario_model->crearPartido() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:118
