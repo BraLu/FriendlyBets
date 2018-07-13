@@ -1,14 +1,13 @@
 <?php  
 
+	require 'models/conexion.php'; 
+	require 'models/grupo.php';
 	require 'controllers/home_controller.php';
 	
 	$objHomeController = new homeController();
 
 	$dataGrupos = $objHomeController->obtenerMisGrupos();
 	$dataTopGrupos = $objHomeController->obtenerGrupoTop();
-	
-
-	$dataDetalle = $objHomeController->obtenerDetalleApuesta();
 	
 ?>
 <div class="row">
@@ -54,7 +53,7 @@
 										            <button type="button" data-placement="bottom" title="Aceptar" class="btn btn-success btn-sm btn-icon" data-toggle='modal' data-target='#enviarSolicitud'>
 								                    <i class="fa fa-check"></i>
 								                	</button>
-									                <button type="button" onclick="javascript:RechazarSolicitud()" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Rechazar" class="btn btn-danger btn-sm btn-icon">
+									                <button type="button" onclick="quizSol(<?php echo 1; ?>,<?php echo 2; ?>)" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Rechazar" class="btn btn-danger btn-sm btn-icon">
 									                    <i class="fa fa-times"></i>
 									                </button>		
 								            	</td>
@@ -103,7 +102,7 @@
 					            <td><?php echo MONEDA.' '. number_format($value['monto_apuesta'],2); ?></td>
 					            <td><?php echo MONEDA.' '. number_format($value['apuesta'],2); ?></td>
 					            <td class="td-actions text-center">
-					            	<button onclick="return false" class="btn btn-warning btn-sm" data-toggle='modal' data-target='#enviarSolicitud'>
+					            	<button onclick="openBoxSol()" class="btn btn-warning btn-sm" data-toggle='modal'  >
 									  <i class="fa fa-envelope"></i> Unirse
 									</button>
 					            </td>
@@ -145,126 +144,40 @@
 
 </style>
 
+<div id="dialog">
+	<div id="framework"></div>
+</div>
+
 <!--Modal de Unirse-->
 <div class="modal fade" id="enviarSolicitud" tabindex="-1" role="dialog" aria-labelledby="enviarSolicitudLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="enviarSolicitudLabel">Enviar Solicitud</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        
-        <div class="row">
-        	<div class="col-sm-12 col-md-6 col-lg-6">
-        		<?php //var_dump($dataDetalle); ?>
-        		<div class="form-group">
-	        		<label>Administrador del Grupo:</label>
-	        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="<?php echo utf8_encode($dataDetalle[0]['nombre']); ?>">
-	        	</div>
-        	</div>
-        	<div class="col-sm-12 col-md-6 col-lg-6">
-        		<div class="form-group">
-	        		<label>Monto Total de la Apuesta:</label>
-	        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="<?php echo MONEDA.''.number_format($dataDetalle[0]['monto_apuesta']); ?>">
-	        	</div>
-        	</div>
-    		<div class="col-sm-12 col-md-12 col-lg-12">
-        		<div class="form-group">
-	        		<label>Ingresar su marcador correspondiente de cada partido:</label>
-	        	</div>
-        	</div>
-        	<div class="col-sm-12 col-md-12 col-lg-12">
-        		<!--<form>-->
-		            <div >
-						<table id="tblMarcador" class="table table-bordered table-striped table-sm table-dark" width="100%">
-						    <thead class="">
-						        <tr>
-						            <th>Partidos</th>
-						            <th>Fecha Partido</th>
-						            <th>Marcador</th>
-						        </tr>
-						    </thead>
-						    <tbody>
-					    		<?php 
-									
-					    			foreach ($dataDetalle as $r) { 
-					    				echo "<tr>
-									            <td>".utf8_encode($r['equipo_1']).' vs '. utf8_encode($r['equipo_2'])."</td>
-									            <td>".$r['fecha_part']."</td>
-									            <td>
-									            	<div class='row'>
-									            		<div class='col-md-12'>
-											        		<div class='form-inline'>
-												        		<input type='number' onKeyPress='if(this.value.length==2) return false;' id='partido1' style='width: 40px' class='form-control' placeholder='0' value=''>
-												        		<label> - </label>
-												        		<input type='number' onKeyPress='if(this.value.length==2) return false;' maxlength='2' id='partido2' style='width: 40px' class='form-control' placeholder='0' value=''>
-												        	</div>
-											        	</div>
-									            	</div>
-									            </td>
-									        </tr>";
-					    			}
-					    			
-					    		?>
-						    </tbody>
-						</table>
-					</div>
-			  	<!--</form>-->
-        	</div>
-        	<div class="col-sm-12 col-md-12 col-lg-12">
-        		<div class="form-group">
-                    <label>Recuerde!</label>
-                    <label>Que solo podra modifcar los marcadores antes de la fecha del primer partido.</textarea>
-                  </div>
-        	</div>
-        </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <input type="button" value="Guardar" class="btn btn-primary" onclick="javascript:GuardarMarcacion()">
-      </div>
-    </div>
-  </div>
+  
 </div>
 
 <!--Script-->
 <script type="text/javascript">
-	
-	function GuardarMarcacion(){
-		$("#enviarSolicitud").modal('hide');
-		
-		swal({
-		  title: 'Enviar Solicitud?',
-		  text: "Si, desea valide el marcador!",
-		  type: 'warning',
-		  showCancelButton: true,
-		  confirmButtonColor: '#3085d6',
-		  cancelButtonColor: '#d33',
-		  confirmButtonText: 'Enviar!',
-		  cancelButtonText: 'Cancelar'
-		}).then((result) => {
-		  if (result.value) {
-		    swal(
-		      'Envio Correctamente!',
-		      'Espere su confirmación.',
-		      'success'
-		    )
-		  }else{
-		  	$("#enviarSolicitud").modal('show');
-		  }
-		})
 
+	function openBoxSol(group,usucod){
+
+		$("#dialog").dialog(
+			{autoOpen: true, 
+				width: 800, 
+				modal: true, 
+				type: 'POST', 
+				data:'id=1', 
+			open: $.ajax({url: "/views/box_solicitud.php?group="+group+"&id"+usucod, 
+				success: function(result){
+        			$("#dialog").html(result);	
+    			}
+    		})  
+		});
 	}
 
-	function RechazarSolicitud(){
+
+	function quizSol(iduser,idgroup){
 		
 		swal({
 		  title: 'Desea Rechazar Invitación?',
-		  text: "Unete al grupo :)",
+		  text: "Este proceso sera irreverible",
 		  type: 'warning',
 		  showCancelButton: true,
 		  confirmButtonColor: '#3085d6',
@@ -273,14 +186,26 @@
 		  cancelButtonText: 'Cancelar'
 		}).then((result) => {
 		  if (result.value) {
-		    swal(
-		      'Se Rechazo Correctamente!',
-		      ':(',
-		      'success'
-		    )
+	  		ajaxcancelsol(iduser,idgroup);		    
 		  }
 		})
 
+	}
+
+	function ajaxcancelsol(idgroup,iduser){
+		 $.ajax({url: "controllers/servicios_controller.php", 
+              contentType: 'application/x-www-form-urlencoded',
+              data: 'idgroup='+idgroup+'&iduser='+iduser+'&metodo=rechazar',
+              type: 'POST',
+              dataType: 'html',
+              success: function(r){
+              	/*swal(
+				      'Proceso Finalizado Correctamente!',
+				      '',
+				      'success'
+				    );*/
+              }
+          });
 	}
 
 </script>

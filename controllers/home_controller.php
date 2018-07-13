@@ -1,7 +1,5 @@
 <?php
 
-	require "models/grupo.php";
-
 	class homeController{
 
 		public function init(){
@@ -39,13 +37,13 @@
     		}    		
     	}
 
-    	public function obtenerDetalleApuesta(){
+    	public function obtenerDetalleApuesta($idgroup = 1, $idusuario = IDUSUARIO){
 
     		try{
 
     			$objGrupo = new grupo_model();
 
-	    		$data = $objGrupo->obtenerDetalleGrupo(1,IDUSUARIO);
+	    		$data = $objGrupo->obtenerDetalleGrupo($idgroup, $idusuario);
 
 	    		return $data;
 
@@ -54,5 +52,37 @@
     		}
 
     	}
+
+    	public function aceptar(){
+
+    		try{
+
+    			$objApuesta = new apuesta_model();
+
+	    		$data = $objApuesta->aceptarSolicitud($_POST);
+
+    		} catch(Exception $e){
+    			echo $e->getMessage();
+    		}
+
+    		return 'OK';
+    	}
+
+    	public function rechazar(){
+
+    		try{
+
+    			$objApuesta = new apuesta_model();
+
+	    		$data = $objApuesta->rechazarSolicitud($_POST);
+
+    		} catch(Exception $e){
+    			echo $e->getMessage();
+    		}
+
+    		return 'OK';
+
+    	}
+
 	}
 ?>
