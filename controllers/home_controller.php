@@ -28,7 +28,7 @@
 
     			$objGrupo = new grupo_model();
 
-	    		$data = $objGrupo->obtenerGruposTop($_SESSION["session"]);
+	    		$data = $objGrupo->obtenerGruposTop(IDUSUARIO);
 
 	    		return $data;
 

@@ -54,7 +54,7 @@
     		
     		$response = array();
 
-    		$consulta= $this->db->query("SELECT g.id_grp, g.nombre_grp, g.sts_grp, g.tipo_grp, g.monto_apuesta, 
+				$query = "SELECT g.id_grp, g.nombre_grp, g.sts_grp, g.tipo_grp, g.monto_apuesta, 
     					u.nombre, a.id_partido, a.id_usr, a.apuesta_1, a.apuesta_2,
 					 	p.equipo_1,p.equipo_2,p.goles_1,p.goles_2, p.fecha_part, p.hora_part
 					FROM grupo g
@@ -63,7 +63,9 @@
 					JOIN partido p ON p.id_partido = a.id_partido
 					AND g.usr_admin = u.idusuario
 					WHERE g.id_grp like $idgrupo 
-						and a.id_usr like $idUsuario ");
+						and a.id_usr like $idUsuario ";
+						//echo $query; exit;
+    		$consulta= $this->db->query($query);
 
 	        while($filas=$consulta->fetch_assoc()){
 	            $response[]=$filas;
