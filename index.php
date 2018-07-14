@@ -61,6 +61,19 @@
                 
                 /* Estamos considerando que el parámetro enviando tiene el mismo nombre del archivo a cargar, si este no fuera así
                   se produciría un error de archivo no encontrado */
+
+                  if ($pagina=="crear_grupo") {
+                    # code...
+                    echo "<input type='hidden' name='accion_grupo' id='accion_grupo' value='create_grupo'>";
+                  }
+
+                  if ($pagina=="actualizar_grupo") {
+                    # code...
+                    $id = isset($_GET['c']) ? strtolower($_GET['c']) : '0';
+                    $pagina="crear_grupo";
+                    echo "<input type='hidden' name='accion_grupo_id' id='accion_grupo_id' value='".$id."'><input type='hidden' name='accion_grupo' id='accion_grupo' value='update_grupo'>";
+                  }
+
                   include('views/' . $pagina . '.php');
                   
               }else{

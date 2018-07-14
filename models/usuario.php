@@ -49,12 +49,42 @@ class usuario_model{
         return $this->partido;
     }
 
-    public function crearApuesta($p_Id_Grp, $p_Id_Usr, $p_Id_Partido,$p_Ind_Pago){
-        $consulta=$this->db->query("CALL sp_crear_apuesta(".$p_Id_Grp.",".$p_Id_Usr.",".$p_Id_Partido.",'".$p_Ind_Pago."')");
+    public function crearApuesta($p_Id_Grp, $p_Id_Usr, $p_Id_Partido,$p_Ind_Pago,$p_Sts_Solicitud_Usr){
+        $consulta=$this->db->query("CALL sp_crear_apuesta(".$p_Id_Grp.",".$p_Id_Usr.",".$p_Id_Partido.",'".$p_Ind_Pago."','".$p_Sts_Solicitud_Usr."')");
         //while($filas=$consulta->fetch_assoc()){
             //$this->apuesta=$filas;
         //}
         //return $this->$apuesta;
+    }
+
+    public function getByDetallePendienteGrupo($id_grp){
+        $consulta=$this->db->query("select g.Id_grp, g.Nombre_Grp, g.Usr_Admin, g.Sts_Grp, g.Monto_Apuesta, g.Tipo_Grp
+from grupo g where g.Id_grp = ".$id_grp.";");
+        while($filas=$consulta->fetch_assoc()){
+            $this->usuarios[]=$filas;
+        }
+        return $this->usuarios;
+    }
+
+    public function getByDetallePendienteUsuarios($id_grp, $idusuario){
+        $consulta=$this->db->query("select distinct a.Id_Usr, u.Nombre, u.Apellidos, u.email,a.Ind_Pago, a.Sts_Solicitud_Usr
+from grupo g inner join apuesta a on (g.Id_Grp = a.Id_Grp) inner join usuario u on (a.Id_Usr = u.IdUsuario)
+where g.Id_grp = ".$id_grp." and a.Id_Usr<>".$idusuario.";");
+        while($filas=$consulta->fetch_assoc()){
+            $this->usuarios[]=$filas;
+        }
+        return $this->usuarios;
+    }
+
+    public function getByDetallePendientePartidos($id_grp){
+        $consulta=$this->db->query("select distinct a.Id_Partido, p.Equipo_1, p.Equipo_2, p.Fecha_Part, p.Hora_Part, p.Sts_part
+from grupo g inner join apuesta a on (g.Id_Grp = a.Id_Grp)
+inner join partido p on (a.Id_Partido = p.Id_Partido) 
+where g.Id_grp = ".$id_grp.";");
+        while($filas=$consulta->fetch_assoc()){
+            $this->usuarios[]=$filas;
+        }
+        return $this->usuarios;
     }
 
 }

@@ -26,6 +26,15 @@ elseif ($_POST["action"]=="crearAmistad") {
 }elseif ($_POST["action"]=="serviceRegistrar") {
 	# code...
 	serviceRegistrar();
+}elseif ($_POST["action"]=="getByDetallePendienteGrupo") {
+	# code...
+	getByDetallePendienteGrupo();
+}elseif ($_POST["action"]=="getByDetallePendienteUsuarios") {
+	# code...
+	getByDetallePendienteUsuarios();
+}elseif ($_POST["action"]=="getByDetallePendientePartidos") {
+	# code...
+	getByDetallePendientePartidos();
 }
 
 function getByUsuario(){
@@ -277,6 +286,30 @@ function serviceRegistrar()
 	} else {
 	  echo $response;
 	}
+}
+
+function getByDetallePendienteGrupo(){
+	include("../models/usuario.php");
+	$user=new usuario_model();
+	$datos=$user->getByDetallePendienteGrupo($_POST["id_Grp"]);
+	$json_string = json_encode($datos);
+	echo $json_string;
+}
+
+function getByDetallePendienteUsuarios(){
+	include("../models/usuario.php");
+	$user=new usuario_model();
+	$datos=$user->getByDetallePendienteUsuarios($_POST["id_Grp"],$_SESSION["session"]);
+	$json_string = json_encode($datos);
+	echo $json_string;
+}
+
+function getByDetallePendientePartidos(){
+	include("../models/usuario.php");
+	$user=new usuario_model();
+	$datos=$user->getByDetallePendientePartidos($_POST["id_Grp"]);
+	$json_string = json_encode($datos);
+	echo $json_string;
 }
 
 ?>
