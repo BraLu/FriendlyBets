@@ -8,7 +8,7 @@
 		        	<div class="col-sm-12 col-md-4 col-lg-4">
 		        		<div class="form-group">
 			        		<label>Administrador del Grupo:</label>
-			        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="Jose Campos">
+			        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="Judith">
 			        	</div>
 		        	</div>
 		        	<div class="col-sm-12 col-md-12 col-lg-12">
@@ -25,34 +25,24 @@
 					    <thead class="">
 					        <tr>
 					            <th>Participante</th>
-					            <?php
-					            	for ($i=1; $i <=7 ; $i++) { 
-					            		echo "<th>Peru Vs Escocia</br>xx/xx/xxxx</br>hh:mm:ss</th>";
-					            	}
-					            ?>
-					            
+					            	<th>Belgica Vs Inglaterra</br>14/07/2018</br>09:00:00</th>
+					            	<th>Francia Vs Croacia</br>15/07/2018</br>11:00:00</th>
 					            <th>Total Puntos</th>
 					        </tr>
 					    </thead>
 					    <tbody>
-
-				    		<?php
-				            	for ($i=1; $i <=7 ; $i++) { 
-				            		echo "<tr>
-								            <td>Juan Carlos</td>
-								            <td>4</td>
-								            <td>5</td>
-								            <td>3</td>
-								            <td>1</td>
-								            <td>1</td>
-								            <td>7</td>
-								            <td>9</td>
-								            <td>55</td>
-								        </tr>";
-				            	}
-				            ?>
-					    	
-
+							<tr>
+				            <td>Luis Fernando</td>
+				            <td>2</td>
+				            <td>0</td>
+				            <td>2</td>
+							</tr>
+							<tr>
+				            <td>Angel Mamani</td>
+				            <td>0</td>
+				            <td>0</td>
+				            <td>0</td>
+							</tr>	            
 					    </tbody>
 					</table>
 				</div>
@@ -71,7 +61,7 @@
 				    	<div class="col-sm-12 col-md-4 col-lg-4">
 			        		<div class="form-group">
 				        		<label>Partido:</label>
-				        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="Peru Vs Escocia">
+				        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="Belgica vs Inglaterra">
 				        	</div>
 			        	</div>
 
@@ -85,7 +75,7 @@
 			        	<div class="col-sm-12 col-md-4 col-lg-4">
 			        		<div class="form-group">
 				        		<label>Fecha y Hora:</label>
-				        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="xx/xx/xxxx hh:mm:ss">
+				        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="14/07/2018 09:00:00">
 				        	</div>
 			        	</div>
 
@@ -101,18 +91,18 @@
 								        </tr>
 								    </thead>
 								    <tbody>
-
-							    		<?php
-							            	for ($i=1; $i <=7 ; $i++) { 
-							            		echo "<tr>
-											            <td>Jose Campos</td>
-											            <td>1 - 0</td>
-											            <td>2 - 2</td>
-											            <td>4</td>
-											        </tr>";
-							            	}
-							            ?>
-								    	
+										<tr>
+								            <td>Luis Fernando</td>
+								            <td>3 - 2</td>
+								            <td>2 - 0</td>
+								            <td>2</td>
+								        </tr>
+								    	<tr>
+								            <td>Angel Mamani</td>
+								            <td>1 - 1</td>
+								            <td>0 - 0</td>
+								            <td>0</td>
+								        </tr>
 
 								    </tbody>
 								</table>
@@ -124,10 +114,7 @@
 
 			</div>
 
-
 		</div>
-
-
 
 	</div>
 
