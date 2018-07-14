@@ -3,3 +3,83 @@
 [09-Jul-2018 17:33:03 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
 [09-Jul-2018 17:33:03 UTC] PHP   2. crearGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:22
 [09-Jul-2018 17:33:03 UTC] PHP   3. usuario_model->crearPartido() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:118
+[14-Jul-2018 06:29:16 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 63
+[14-Jul-2018 06:29:16 UTC] PHP Stack trace:
+[14-Jul-2018 06:29:16 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:29:16 UTC] PHP   2. getByDetallePendienteGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:31
+[14-Jul-2018 06:29:16 UTC] PHP   3. usuario_model->getByDetallePendienteGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:294
+[14-Jul-2018 06:29:16 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 73
+[14-Jul-2018 06:29:16 UTC] PHP Stack trace:
+[14-Jul-2018 06:29:16 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:29:16 UTC] PHP   2. getByDetallePendienteUsuarios() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:34
+[14-Jul-2018 06:29:16 UTC] PHP   3. usuario_model->getByDetallePendienteUsuarios() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:302
+[14-Jul-2018 06:29:16 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 84
+[14-Jul-2018 06:29:16 UTC] PHP Stack trace:
+[14-Jul-2018 06:29:16 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:29:16 UTC] PHP   2. getByDetallePendientePartidos() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:37
+[14-Jul-2018 06:29:16 UTC] PHP   3. usuario_model->getByDetallePendientePartidos() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:310
+[14-Jul-2018 06:30:33 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 73
+[14-Jul-2018 06:30:33 UTC] PHP Stack trace:
+[14-Jul-2018 06:30:33 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:30:33 UTC] PHP   2. getByDetallePendienteUsuarios() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:34
+[14-Jul-2018 06:30:33 UTC] PHP   3. usuario_model->getByDetallePendienteUsuarios() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:302
+[14-Jul-2018 06:30:33 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 63
+[14-Jul-2018 06:30:33 UTC] PHP Stack trace:
+[14-Jul-2018 06:30:33 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:30:33 UTC] PHP   2. getByDetallePendienteGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:31
+[14-Jul-2018 06:30:33 UTC] PHP   3. usuario_model->getByDetallePendienteGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:294
+[14-Jul-2018 06:30:33 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 84
+[14-Jul-2018 06:30:33 UTC] PHP Stack trace:
+[14-Jul-2018 06:30:33 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:30:33 UTC] PHP   2. getByDetallePendientePartidos() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:37
+[14-Jul-2018 06:30:33 UTC] PHP   3. usuario_model->getByDetallePendientePartidos() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:310
+[14-Jul-2018 06:31:46 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 63
+[14-Jul-2018 06:31:46 UTC] PHP Stack trace:
+[14-Jul-2018 06:31:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:31:46 UTC] PHP   2. getByDetallePendienteGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:31
+[14-Jul-2018 06:31:46 UTC] PHP   3. usuario_model->getByDetallePendienteGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:294
+[14-Jul-2018 06:31:46 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 73
+[14-Jul-2018 06:31:46 UTC] PHP Stack trace:
+[14-Jul-2018 06:31:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:31:46 UTC] PHP   2. getByDetallePendienteUsuarios() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:34
+[14-Jul-2018 06:31:46 UTC] PHP   3. usuario_model->getByDetallePendienteUsuarios() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:302
+[14-Jul-2018 06:31:46 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 84
+[14-Jul-2018 06:31:46 UTC] PHP Stack trace:
+[14-Jul-2018 06:31:46 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:31:46 UTC] PHP   2. getByDetallePendientePartidos() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:37
+[14-Jul-2018 06:31:46 UTC] PHP   3. usuario_model->getByDetallePendientePartidos() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:310
+[14-Jul-2018 06:33:25 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 63
+[14-Jul-2018 06:33:25 UTC] PHP Stack trace:
+[14-Jul-2018 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:33:25 UTC] PHP   2. getByDetallePendienteGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:31
+[14-Jul-2018 06:33:25 UTC] PHP   3. usuario_model->getByDetallePendienteGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:294
+[14-Jul-2018 06:33:25 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 73
+[14-Jul-2018 06:33:25 UTC] PHP Stack trace:
+[14-Jul-2018 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:33:25 UTC] PHP   2. getByDetallePendienteUsuarios() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:34
+[14-Jul-2018 06:33:25 UTC] PHP   3. usuario_model->getByDetallePendienteUsuarios() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:302
+[14-Jul-2018 06:33:25 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 84
+[14-Jul-2018 06:33:25 UTC] PHP Stack trace:
+[14-Jul-2018 06:33:25 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:33:25 UTC] PHP   2. getByDetallePendientePartidos() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:37
+[14-Jul-2018 06:33:25 UTC] PHP   3. usuario_model->getByDetallePendientePartidos() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:310
+[14-Jul-2018 06:34:40 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 63
+[14-Jul-2018 06:34:40 UTC] PHP Stack trace:
+[14-Jul-2018 06:34:40 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:34:40 UTC] PHP   2. getByDetallePendienteGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:31
+[14-Jul-2018 06:34:40 UTC] PHP   3. usuario_model->getByDetallePendienteGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:294
+[14-Jul-2018 06:34:40 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 73
+[14-Jul-2018 06:34:40 UTC] PHP Stack trace:
+[14-Jul-2018 06:34:40 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:34:40 UTC] PHP   2. getByDetallePendienteUsuarios() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:34
+[14-Jul-2018 06:34:40 UTC] PHP   3. usuario_model->getByDetallePendienteUsuarios() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:302
+[14-Jul-2018 06:34:40 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 84
+[14-Jul-2018 06:34:40 UTC] PHP Stack trace:
+[14-Jul-2018 06:34:40 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[14-Jul-2018 06:34:40 UTC] PHP   2. getByDetallePendientePartidos() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:37
+[14-Jul-2018 06:34:40 UTC] PHP   3. usuario_model->getByDetallePendientePartidos() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:310
+[14-Jul-2018 20:06:15 UTC] PHP Catchable fatal error:  Object of class mysqli_result could not be converted to string in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/grupo.php on line 67
+[14-Jul-2018 20:06:15 UTC] PHP Stack trace:
+[14-Jul-2018 20:06:15 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_solicitud.php:0
+[14-Jul-2018 20:06:15 UTC] PHP   2. homeController->obtenerDetalleApuesta() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_solicitud.php:10
+[14-Jul-2018 20:06:15 UTC] PHP   3. grupo_model->obtenerDetalleGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/home_controller.php:46

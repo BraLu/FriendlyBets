@@ -1,5 +1,5 @@
 <?php
- 
+  
   if(isset($_GET['id']) && isset($_GET['group'])){
     require '../models/conexion.php'; 
     require "../models/grupo.php";
@@ -19,12 +19,7 @@
 
 <div class="modal-dialog modal-lg" role="document">
 <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="enviarSolicitudLabel">Enviar Solicitud</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+      
       <div class="modal-body">
         
         <div class="row">
@@ -107,8 +102,9 @@
   </div>    
   <script type="text/javascript">
   	function closeBox(){
-      $("#dialog").dialog('close');
+      $("#enviarSolicitud").dialog('close');
     }
+    
     function saveAsSol(){
     
       swal({
@@ -142,8 +138,6 @@
               
               }
           });
-
-           
 
         }
 

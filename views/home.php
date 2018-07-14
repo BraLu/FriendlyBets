@@ -65,7 +65,10 @@
 
 								            	 ?>
 							            		<td>	
-										            <button type="button" data-placement="bottom" title="Aceptar" class="btn btn-success btn-sm btn-icon" data-toggle='modal' data-target='#enviarSolicitud'>
+										            <button type="button" 
+										            data-placement="bottom" title="Aceptar" 
+										            class="btn btn-success btn-sm btn-icon" data-target='#enviarSolicitud'
+										            data-toggle='modal' onclick="openBoxSol(<?php echo $record['Id_Grp']; ?>,<?php echo IDUSUARIO; ?>)" >
 								                    <i class="fa fa-check"></i>
 								                	</button>
 									                <button type="button" onclick="quizSol(<?php echo 1; ?>,<?php echo 2; ?>)" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Rechazar" class="btn btn-danger btn-sm btn-icon">
@@ -120,9 +123,14 @@
 					            <td><?php echo MONEDA.' '. number_format($value['monto_apuesta'],2); ?></td>
 					            <td><?php echo MONEDA.' '. number_format($value['apuesta'],2); ?></td>
 					            <td class="td-actions text-center">
-					            	<button onclick="openBoxSol(<?php echo $value['id_grp'] ?>,<?php echo IDUSUARIO; ?>)" class="btn btn-warning btn-sm" data-toggle='modal'  >
-									  <i class="fa fa-envelope"></i> Unirse
-									</button>
+					            	
+									 <button type="button" 
+										            data-placement="bottom" title="Aceptar" 
+										            class="btn btn-warning btn-sm" data-target='#enviarSolicitud'
+										            data-toggle='modal' onclick="openBoxSol(<?php echo $value['id_grp'] ?>,<?php echo IDUSUARIO; ?>)" >
+								                    Unirse
+								                	</button>
+								                	
 					            </td>
 					        </tr>
 					        <?php 
@@ -166,28 +174,90 @@
 	<div id="framework"></div>
 </div>
 
+<div class="modal fade" id="enviarSolicitud"  role="dialog" >
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="enviarSolicitudLabel">Enviar Solicitud</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="divboxsol"></div>
+      </div>
+    </div>
+
+  </div>  	
+	  
+</div>
+
 <!--Modal de Unirse-->
-<div class="modal fade" id="enviarSolicitud" tabindex="-1" role="dialog" aria-labelledby="enviarSolicitudLabel" aria-hidden="true">
-  
+<div class="modal fade" id="enviarSolicitud2" tabindex="-1" role="dialog" aria-labelledby="enviarSolicitudLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="enviarSolicitudLabel">Enviar Solicitud</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+        </div>
+      </div>
+    </div>
+
+  </div>  
 </div>
 
 <!--Script-->
 <script type="text/javascript">
 
+function acepSol(){
+    
+      swal({
+        title: 'Desea aceptar la solicitud?',
+        text: "",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Aceptar',
+        cancelButtonText: 'Cancelar'
+      }).then((result) => {
+        if (result.value) {
+         
+        }
+
+      })
+
+    }
+    
 	function openBoxSol(group,usucod){
 
-		$("#dialog").dialog(
+		/*$("#dialog").dialog(
 			{autoOpen: true, 
 				width: 800, 
 				modal: true, 
 				type: 'POST', 
 				data:'id=1', 
-			open: $.ajax({url: "/views/box_solicitud.php?group="+group+"&id"+usucod, 
+			open: 
+			$.ajax({url: "/views/box_solicitud.php?group="+group+"&id"+usucod, 
 				success: function(result){
         			$("#dialog").html(result);	
     			}
-    		})  
-		});
+    		})
+		});*/
+		
+		setTimeout(function(){
+			$.ajax({url: "views/box_solicitud.php", 
+				data: {group: group, id: usucod, metodo: 'enviar'},
+				success: function(result){
+        			$("#divboxsol").html(result);	
+    			}
+    		});
+		},500);
 	}
 
 
