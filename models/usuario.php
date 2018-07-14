@@ -87,5 +87,13 @@ where g.Id_grp = ".$id_grp.";");
         return $this->usuarios;
     }
 
+    public function actualizarGrupo($p_Id_Grp, $p_IdUsuario, $p_Ind_Pago){
+        $consulta=$this->db->query("CALL sp_actualizar_grupo(".$p_Id_Grp.",".$p_IdUsuario.",'".$p_Ind_Pago."')");
+        while($filas=$consulta->fetch_assoc()){
+            $this->apuesta=$filas;
+        }
+        return $this->apuesta;
+    }
+
 }
 ?>

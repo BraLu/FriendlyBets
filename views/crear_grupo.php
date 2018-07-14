@@ -23,7 +23,7 @@
 
 <div class="card">
     <div class="card-header">
-      <h5 class="title">CREAR GRUPO DE APUESTAS</h5>
+      <h5 class="title" id="titulo_view">CREAR GRUPO DE APUESTAS</h5>
     </div>
     <div class="card-body">
 		<div class="row">
@@ -238,10 +238,11 @@
 	if (accion_view == "create_grupo") {
 		$("#btn_puntaje").attr("disabled","disabled");
 	}else{
+		$("#titulo_view").text("ACTUALIZAR GRUPO DE APUESTAS");
 		var accion_view_id = $("#accion_grupo_id").val();
 		//console.log(accion_view_id);
 		$("#txt_nombre_grupo").attr("disabled","disabled");
-		//$("#txt_monto_apuesta").attr("disabled","disabled");
+		$("#txt_monto_apuesta").attr("disabled","disabled");
 		$("#chk_tipo_grupo").attr("disabled","disabled");
 		$("#btn_Lista_Amigos").css("display","none");
 		$("#btn_Nuevo_Amigo").css("display","none");
@@ -261,7 +262,7 @@
 	          //contentType: 'application/json',
 	          data: { action : "getByDetallePendienteGrupo", id_Grp: accion_view_id },
 	          success: function(response) {
-	          	console.log(JSON.parse(response));
+	          	//console.log(JSON.parse(response));
 	          		//datos principales
 	          		$.each(JSON.parse(response),function (key,val) {
 	          			$("#txt_nombre_grupo").val(val.Nombre_Grp);
@@ -271,41 +272,6 @@
 						}
 						
 	          		});	
-
-
-
-	          		/*tablaBody.empty();
-	          		var items=new Array();
-          			//console.log(items);
-	          		$.each(items,function (key,val) {
-	              		// body...
-	              		if (val.status != "FINISHED") {
-              				var status = "";
-		              		items.push("<tr>");
-		              		items.push("<td hidden>"+ val.awayTeamName + val.homeTeamName  + "</td>");
-		              		items.push("<td>"+ val.awayTeamName +"</td>");
-			              	items.push("<td>"+ val.homeTeamName +"</td>");
-			              	var fecha = new Date(val.date);
-							items.push("<td>"+fecha.toLocaleDateString("en-GB")+"</td>");
-							items.push("<td>"+fecha.toLocaleTimeString("en-GB")+"</td>");
-				              	if (val.status=="TIMED") {
-			              			items.push("<td>PENDIENTE</td>");
-			              			items.push("<td>"+"<input type='checkbox' id='partido-"+val.awayTeamName+val.homeTeamName+"'/></td>");
-				              	}
-				              	else if(val.status=="IN_PLAY")
-				              	{
-				              		items.push("<td>EN JUEGO</td>");
-			              			items.push("<td></td>");
-
-				              	}else{
-			              			items.push("<td>EN DEFINICIÓN</td>");
-			              			items.push("<td></td>");
-				              	}
-
-			              	items.push("</tr>");
-	              		}
-	              	});
-          			tablaBody.append(items.join(''));*/
 	          },
 	          error: function(error) {
 	              console.log(error);
@@ -319,7 +285,7 @@
 	          //contentType: 'application/json',
 	          data: { action : "getByDetallePendienteUsuarios", id_Grp: accion_view_id },
 	          success: function(response) {
-	          	console.log(JSON.parse(response));
+	          	//console.log(JSON.parse(response));
 	          		//datos usuarios
 	          		tablaBodya.empty();
 	          		var items1=new Array();
@@ -332,10 +298,11 @@
 			              	items1.push("<td>"+val.email+"</td>");
 			              	items1.push("<td>"+val.Sts_Solicitud_Usr+"</td>");
 			              	if (val.Ind_Pago=="N") {
-		              			items1.push("<td>"+"<input type='checkbox' id='add-check-"+val.Id_Usr+"'/> "+"</td>");
+		              			items1.push("<td>"+"<input type='checkbox' id='pagoa-check-"+val.Id_Usr+"'/> "+"</td>");
 			              	}else{
-			              		items1.push("<td>"+"<input type='checkbox' checked id='add-check-"+val.Id_Usr+"'/> "+"</td>");
+			              		items1.push("<td>"+"<input type='checkbox' checked id='pagoa-check-"+val.Id_Usr+"'/> "+"</td>");
 			              	}
+			              	items1.push("<td>-</td>");
 			              	items1.push("</tr>");
 	              	});
           			tablaBodya.append(items1.join(''));
@@ -352,7 +319,7 @@
 	          //contentType: 'application/json',
 	          data: { action : "getByDetallePendientePartidos", id_Grp: accion_view_id },
 	          success: function(response) {
-	          	console.log(JSON.parse(response));
+	          	//console.log(JSON.parse(response));
 	          		//datos principales
 
 	          		tablaBodyp.empty();
@@ -534,21 +501,25 @@
 
   	function guardarGrupo() {
   		// body...
-  		if($("#txt_nombre_grupo").val()=="") 
-		{
-			fbNotify('top','right','danger',"Completar el campo nombre del grupo");
-			return false;
-		}
-  		if($("#txt_monto_apuesta").val()=="") 
-  		{
-  			fbNotify('top','right','danger',"Completar el campo monto de la apuesta");
-  			return false;
+  		if (bool_accion_view) {
+  			if($("#txt_nombre_grupo").val()=="") 
+			{
+				fbNotify('top','right','danger',"Completar el campo nombre del grupo");
+				return false;
+			}
+	  		if($("#txt_monto_apuesta").val()=="") 
+	  		{
+	  			fbNotify('top','right','danger',"Completar el campo monto de la apuesta");
+	  			return false;
+	  		}
+	  		if(arrayAmistades.length==0) 
+	  		{
+	  			fbNotify('top','right','danger',"No tienes ninguna amistad seleccionada.");
+	  			return false;
+			}
   		}
-  		if(arrayAmistades.length==0) 
-  		{
-  			fbNotify('top','right','danger',"No tienes ninguna amistad seleccionada.");
-  			return false;
-		}
+  		
+
 		swal({
 		  title: 'Guardar Grupo?',
 		  text: "Si desea valida la información!",
@@ -566,81 +537,131 @@
 		      'success'
 		    ).then((result) => {
 	    		fbShowLoading();
-	    		var check = "C";
-	    		if ($("#chk_tipo_grupo").is(':checked')) check = "A";
+	    		if (bool_accion_view) {
 
-	    		//Amigos Seleccionados
-	    		var arrayAmigos = [];
-	    		$('#tbl_amigos_apuesta tbody tr').each(function () {
-					var id = $(this).find("td").eq(0).html();
-					var pago = "N"
-					if ($("#pago-check-"+id).is(':checked')) {
-						pago = "S";
-					}
-					var obj = {
-							    p_Usr: id,
-							    p_Pago: pago 
-							  };
-					  	arrayAmigos.push(obj);
-				});
+	    			
+	    			var check = "C";
+		    		if ($("#chk_tipo_grupo").is(':checked')) check = "A";
 
-	    		//Partidos Seleccionados
-	    		var arrayPartidos = [];
-	    		$('#tbl_partidos tbody tr').each(function () {
-					var id = $(this).find("td").eq(0).html();
-					if ($("#partido-"+id+"").is(':checked')) {
-						var Equipo1 = $(this).find("td").eq(1).html();
-						var Equipo2 = $(this).find("td").eq(2).html();
-						var Fecha = $(this).find("td").eq(3).html();
-						var date = new Date(Fecha);
-						var Hora = $(this).find("td").eq(4).html();
+		    		//Amigos Seleccionados
+		    		var arrayAmigos = [];
+		    		$('#tbl_amigos_apuesta tbody tr').each(function () {
+						var id = $(this).find("td").eq(0).html();
+						var pago = "N"
+						if ($("#pago-check-"+id).is(':checked')) {
+							pago = "S";
+						}
 						var obj = {
-								    p_Equipo1: Equipo1,
-								    p_Equipo2: Equipo2,
-								    p_Fecha: date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(),
-								    p_Hora: Hora,
+								    p_Usr: id,
+								    p_Pago: pago 
 								  };
-					  	arrayPartidos.push(obj);
-					  }
-				});
+						  	arrayAmigos.push(obj);
+					});
 
-	    		var p_grupo = {
-    				p_Nombregrupo : $("#txt_nombre_grupo").val(),
-    				p_MontoApuesta : parseInt($("#txt_monto_apuesta").val()),
-    				p_TipoGrupo : check,
-    				Amigos : arrayAmigos,
-    				Partidos : arrayPartidos
+		    		//Partidos Seleccionados
+		    		var arrayPartidos = [];
+		    		$('#tbl_partidos tbody tr').each(function () {
+						var id = $(this).find("td").eq(0).html();
+						if ($("#partido-"+id+"").is(':checked')) {
+							var Equipo1 = $(this).find("td").eq(1).html();
+							var Equipo2 = $(this).find("td").eq(2).html();
+							var Fecha = $(this).find("td").eq(3).html();
+							var date = new Date(Fecha);
+							var Hora = $(this).find("td").eq(4).html();
+							var obj = {
+									    p_Equipo1: Equipo1,
+									    p_Equipo2: Equipo2,
+									    p_Fecha: date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(),
+									    p_Hora: Hora,
+									  };
+						  	arrayPartidos.push(obj);
+						  }
+					});
+
+		    		var p_grupo = {
+	    				p_Nombregrupo : $("#txt_nombre_grupo").val(),
+	    				p_MontoApuesta : parseInt($("#txt_monto_apuesta").val()),
+	    				p_TipoGrupo : check,
+	    				Amigos : arrayAmigos,
+	    				Partidos : arrayPartidos
+		    		}
+
+		    		$.ajax({
+				          type: 'POST',
+				          url: 'controllers/usuario_controller.php',
+				          //dataType: 'json',
+				          //contentType: 'application/json',
+				          data: { action : "crearGrupo", 
+				          		  grupo : p_grupo
+				          		},
+				          success: function(response) {
+				          		//console.log(JSON.parse(response));
+				          		fbHideLoading();
+				          		$.each( JSON.parse(response), function( key, val ) {
+								    if(val.status==400){
+							    		fbNotify('top','right','danger',val.message);
+								    }else if(val.status==200){
+								    	fbNotify('top','right','success',val.message);
+								    	location='security/iniciar_session.php';
+								    }
+								});
+				          },
+				          error: function(error) {
+				              console.log(error);
+				              fbHideLoading();
+				          }
+				    });
+	    		}else{
+	    			console.log("function actualizar")
+	    			//Amigos Seleccionados
+		    		var arrayAmigos = [];
+		    		$('#tbl_amigos_apuesta tbody tr').each(function () {
+						var id = $(this).find("td").eq(0).html();
+						var pago = "N"
+						if ($("#pagoa-check-"+id).is(':checked')) {
+							pago = "S";
+						}
+						var obj = {
+								    p_Usr: id,
+								    p_Pago: pago 
+								  };
+						  	arrayAmigos.push(obj);
+					});
+
+					var p_grupo = {
+	    				p_idGrp : $("#accion_grupo_id").val(),
+	    				Amigos : arrayAmigos,
+		    		}
+		    		console.log(p_grupo);
+		    		$.ajax({
+				          type: 'POST',
+				          url: 'controllers/usuario_controller.php',
+				          //dataType: 'json',
+				          //contentType: 'application/json',
+				          data: { action : "actualizarGrupo", 
+				          		  grupo : p_grupo
+				          		},
+				          success: function(response) {
+				          		//console.log(JSON.parse(response));
+				          		//console.log(response);
+				          		fbHideLoading();
+				          		$.each( JSON.parse(response), function( key, val ) {
+								    if(val.status==400){
+							    		fbNotify('top','right','danger',val.message);
+								    }else if(val.status==200){
+								    	fbNotify('top','right','success',val.message);
+								    	location='security/iniciar_session.php';
+								    }
+								});
+				          },
+				          error: function(error) {
+				              console.log(error);
+				              fbHideLoading();
+				          }
+				    });
 	    		}
 
-	    		$.ajax({
-			          type: 'POST',
-			          url: 'controllers/usuario_controller.php',
-			          //dataType: 'json',
-			          //contentType: 'application/json',
-			          data: { action : "crearGrupo", 
-			          		  grupo : p_grupo
-			          		},
-			          success: function(response) {
-			          		//console.log(JSON.parse(response));
-			          		fbHideLoading();
-			          		$.each( JSON.parse(response), function( key, val ) {
-							    if(val.status==400){
-						    		fbNotify('top','right','danger',val.message);
-							    }else if(val.status==200){
-							    	fbNotify('top','right','success',val.message);
-							    	location='security/iniciar_session.php';
-							    }
-							});
-			          },
-			          error: function(error) {
-			              console.log(error);
-			              fbHideLoading();
-			          }
-			    });
-
-
-	    		
-	    		console.log(p_grupo);
+	    		//console.log(p_grupo);
 		    });
 		  }else{
 		  	//$("#enviarSolicitud").modal('show');

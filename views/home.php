@@ -51,7 +51,15 @@
 									            	if ($record['administrador']=="Administrador") {
 									            ?>
 									            
-									            <td><a href="?p=actualizar_grupo&c=<?php echo $record['Id_Grp']; ?>"><?php echo $record['solicitudes']; ?></a> </td>
+									            <td>
+								            		<button type="button" data-placement="bottom" title="Completar Marcador" class="btn btn-info btn-sm btn-icon" data-toggle='modal' data-target='#enviarSolicitud'>
+								                    <i class="fa fa-list"></i>
+								                	</button>
+									            	<a href="?p=actualizar_grupo&c=<?php echo $record['Id_Grp']; ?>">
+									            	
+									            	<?php echo $record['solicitudes']; ?>
+									            	</a> 
+									            </td>
 
 								            	<?php }else {
 

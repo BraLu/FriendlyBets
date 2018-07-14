@@ -35,6 +35,9 @@ elseif ($_POST["action"]=="crearAmistad") {
 }elseif ($_POST["action"]=="getByDetallePendientePartidos") {
 	# code...
 	getByDetallePendientePartidos();
+}elseif ($_POST["action"]=="actualizarGrupo") {
+	# code...
+	actualizarGrupo();
 }
 
 function getByUsuario(){
@@ -310,6 +313,28 @@ function getByDetallePendientePartidos(){
 	$datos=$user->getByDetallePendientePartidos($_POST["id_Grp"]);
 	$json_string = json_encode($datos);
 	echo $json_string;
+}
+
+function actualizarGrupo()
+{
+	# code...
+	include("../models/usuario.php");
+	
+	$grupo = $_POST["grupo"];
+	$idGrp = $grupo["p_idGrp"];
+	$arrayAmigos = $grupo["Amigos"];
+
+	foreach($arrayAmigos as $amigo)
+	{
+ 		$usr = $amigo["p_Usr"];
+		$pago = $amigo["p_Pago"];
+ 		$user=new usuario_model();
+ 		$response1=$user->actualizarGrupo($idGrp,$usr,$pago);	
+	}
+
+	$respuesta[] = array("status"=>200,"message"=>"Se registro correctamente.");
+	echo json_encode($respuesta);	
+
 }
 
 ?>
