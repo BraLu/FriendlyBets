@@ -5,6 +5,6 @@ define('USER','root');
 define('PASS','');
 define('DBNAME','friendlybets');
 define('MONEDA','S/.');
-define('IDUSUARIO',1);
+define('IDUSUARIO',$_SESSION['session']);
 
 ?>

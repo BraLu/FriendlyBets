@@ -112,7 +112,7 @@
 					            <td><?php echo MONEDA.' '. number_format($value['monto_apuesta'],2); ?></td>
 					            <td><?php echo MONEDA.' '. number_format($value['apuesta'],2); ?></td>
 					            <td class="td-actions text-center">
-					            	<button onclick="openBoxSol()" class="btn btn-warning btn-sm" data-toggle='modal'  >
+					            	<button onclick="openBoxSol(<?php echo $value['id_grp'] ?>,<?php echo IDUSUARIO; ?>)" class="btn btn-warning btn-sm" data-toggle='modal'  >
 									  <i class="fa fa-envelope"></i> Unirse
 									</button>
 					            </td>
