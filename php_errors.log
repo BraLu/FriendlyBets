@@ -103,3 +103,18 @@
 [14-Jul-2018 22:49:16 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
 [14-Jul-2018 22:49:16 UTC] PHP   2. crearGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:22
 [14-Jul-2018 22:49:16 UTC] PHP   3. usuario_model->crearPartido() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:136
+[15-Jul-2018 00:12:19 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 63
+[15-Jul-2018 00:12:19 UTC] PHP Stack trace:
+[15-Jul-2018 00:12:19 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[15-Jul-2018 00:12:19 UTC] PHP   2. getByDetallePendienteGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:31
+[15-Jul-2018 00:12:19 UTC] PHP   3. usuario_model->getByDetallePendienteGrupo() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:297
+[15-Jul-2018 00:12:19 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 73
+[15-Jul-2018 00:12:19 UTC] PHP Stack trace:
+[15-Jul-2018 00:12:19 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[15-Jul-2018 00:12:19 UTC] PHP   2. getByDetallePendienteUsuarios() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:34
+[15-Jul-2018 00:12:19 UTC] PHP   3. usuario_model->getByDetallePendienteUsuarios() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:305
+[15-Jul-2018 00:12:19 UTC] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home/ubuntu/workspace/proyectpg/FriendlyBets/models/usuario.php on line 84
+[15-Jul-2018 00:12:19 UTC] PHP Stack trace:
+[15-Jul-2018 00:12:19 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
+[15-Jul-2018 00:12:19 UTC] PHP   2. getByDetallePendientePartidos() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:37
+[15-Jul-2018 00:12:19 UTC] PHP   3. usuario_model->getByDetallePendientePartidos() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:313

@@ -48,6 +48,88 @@
         
     } 
 
+		public function consultarDetalleDeGrupo($idgrupo){
+			
+			$query = "SELECT g.usr_admin, CONCAT( adm.nombre,  ' ', adm.apellidos ) AS admin, a.id_grp, a.id_usr, a.id_partido, 
+			CONCAT( u.nombre,  ' ', u.apellidos )  'nombre', CONCAT( p.equipo_1,  ' Vs ', p.equipo_2 )  'partido', 
+			p.fecha_part, p.Hora_part, a.puntaje_usr, a.ptos_result 'puntos'
+FROM apuesta a, usuario u, grupo g, partido p, usuario adm
+WHERE a.id_usr = u.idusuario
+AND a.id_grp = g.id_grp
+AND a.id_partido = p.id_partido
+AND adm.idusuario = g.usr_admin
+AND a.Id_Grp = $idgrupo ";
+
+				$response = array();
+				//echo $query; exit;
+				$consulta= $this->db->query($query);
+
+	        while($filas=$consulta->fetch_assoc()){
+	            $response[]=$filas;
+	        }
+	        
+	        return $response;
+		}
+		
+		public function obtenerBodyGrupo($idgrupo){
+			
+				$response = $this->consultarDetalleDeGrupo($idgrupo);
+			
+				$store = array();
+				foreach($response as $v){
+					$store[$v['id_usr']]['nombre'] = $v['nombre']; 
+					$store[$v['id_usr']]['partidos'][$v['id_partido']] = $v['puntos']; 
+				}
+
+	        return $store;
+		}
+
+		public function obtenerCabeceraGrupo($idgrupo){
+			
+				$response = $this->consultarDetalleDeGrupo($idgrupo);
+
+				$store = array();
+				foreach($response as $v){
+					$store[$v['id_partido']] = array(
+						'partido'=>$v['partido'],
+						'fecha'=>$v['fecha_part'],
+						'hora'=>$v['Hora_part'],
+						'idgrupo'=>$v['id_grp'],
+						'idpartido'=>$v['id_partido'],
+						'admin'=>$v['admin'],
+						);
+				}
+
+	        return $store;
+
+		}
+
+		public function obtenerDetallePuntajePartido($idgrupo, $idpartido){
+			
+			$query = "SELECT CONCAT( u.nombre,  ' ', u.apellidos )  'nombre', 
+CONCAT( p.equipo_1,  ' Vs ', p.equipo_2 )  'partido', 
+CONCAT( a.apuesta_1,  ' - ', a.apuesta_1 )  'marcacion_apost', 
+CONCAT( a.ptos_result,  ' - ', a.ptos_marcador )  'puntos', 
+puntaje_usr, p.fecha_part, p.Hora_part, g.id_grp
+FROM apuesta a 
+JOIN usuario u on a.id_usr = u.idusuario
+JOIN grupo g on g.id_grp = a.id_grp
+JOIN partido p on g.id_grp = a.id_grp
+WHERE g.id_grp = $idgrupo
+AND p.id_partido = $idpartido 
+GROUP BY a.id_usr";
+
+			$response = array();
+			$consulta= $this->db->query($query);
+
+	        while($filas=$consulta->fetch_assoc()){
+	            $response[]=$filas;
+	        }
+
+	        return $response;
+			
+		}
+
     public function obtenerDetalleGrupo($idgrupo, $idUsuario){
 
 		try {
