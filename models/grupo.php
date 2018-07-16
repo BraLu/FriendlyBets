@@ -141,7 +141,8 @@ FROM grupo g
 JOIN apuesta a ON a.id_grp = g.id_grp 
 JOIN partido p ON p.id_partido = a.id_partido
 JOIN usuario u ON u.idusuario = g.usr_admin
-WHERE g.id_grp = $idgrupo  ";
+WHERE g.id_grp = $idgrupo 
+GROUP BY g.id_grp ";
 						//echo $query; exit;
     		$consulta= $this->db->query($query);
 
@@ -149,7 +150,7 @@ WHERE g.id_grp = $idgrupo  ";
 	            $response[]=$filas;
 	        }
 
-	        return array(0=>current($response));
+	        return $response;
 
     	} catch(Exception $e){
     		throw new Exception($e->getMessage(), 1);    		
