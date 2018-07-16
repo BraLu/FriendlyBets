@@ -69,8 +69,8 @@ session_start();
 					    		<?php 
 									
 					    			foreach ($dataDetalle as $r) { 
-                      $idpart1 = "{$r['id_grp']}_{$r['id_usr']}_{$r['id_partido']}_1";
-                      $idpart2 = "{$r['id_grp']}_{$r['id_usr']}_{$r['id_partido']}_2";
+                      $idpart1 = "{$r['id_grp']}_{$r['id_partido']}_1";
+                      $idpart2 = "{$r['id_grp']}_{$r['id_partido']}_2";
 					    				echo "<tr>
 									            <td>".utf8_encode($r['equipo_1']).' vs '. utf8_encode($r['equipo_2'])."</td>
 									            <td>".$r['fecha_part']."</td>

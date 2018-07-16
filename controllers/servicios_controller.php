@@ -15,8 +15,8 @@
 
 				$insert = array();
 	    		foreach ($post as $key => $value) {
-	    			list($id_grupo,$id_usuario,$id_partido,$nro_apuesta) = explode('_', $key);
-	    			$iden = $id_grupo.$id_partido.$id_usuario;
+	    			list($id_grupo,$id_partido,$nro_apuesta) = explode('_', $key);
+	    			$iden = $id_grupo.$id_usuario;
 
 	    			$insert[$iden]['idgrupo'] = $id_grupo;
 	    			$insert[$iden]['idusuario'] = IDUSUARIO;
