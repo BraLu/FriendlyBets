@@ -148,8 +148,8 @@
 					            	
 									 <button type="button" 
 										            data-placement="bottom" title="Aceptar" 
-										            class="btn btn-warning btn-sm" data-target='#enviarSolicitud'
-										            data-toggle='modal' onclick="openBoxSol(<?php echo $value['id_grp'] ?>,<?php echo IDUSUARIO; ?>)" >
+										            class="btn btn-warning btn-sm" data-target='#enviarSolicitud2'
+										            data-toggle='modal' onclick="openBoxUnion(<?php echo $value['id_grp'] ?>)" >
 								                    Unirse
 								                	</button>
 								                	
@@ -200,7 +200,7 @@
 <div class="modal-dialog modal-lg" role="document">
 <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="enviarSolicitudLabel">Enviar Solicitud</h5>
+        <h5 class="modal-title" id="enviarSolicitudLabel">Registrar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -209,13 +209,11 @@
         <div id="divboxsol"></div>
       </div>
     </div>
-
   </div>  	
-	  
 </div>
 
 <!--Modal de Unirse-->
-<div class="modal fade" id="enviarSolicitud2" tabindex="-1" role="dialog" aria-labelledby="enviarSolicitudLabel" aria-hidden="true">
+<div class="modal fade" id="enviarSolicitud2"  role="dialog" >
 <div class="modal-dialog modal-lg" role="document">
 <div class="modal-content">
       <div class="modal-header">
@@ -225,14 +223,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="row">
-        </div>
+        <div id="divboxsol2"></div>
       </div>
     </div>
-
-  </div>  
+  </div>  	
 </div>
-
 <!--Script-->
 <script type="text/javascript">
 
@@ -256,22 +251,20 @@ function acepSol(){
 
     }
     
+    function openBoxUnion(group){
+    	
+		setTimeout(function(){
+			$.ajax({url: "views/box_unirse.php", 
+				data: {group: group, metodo: 'unirse'},
+				success: function(result){
+        			$("#divboxsol2").html(result);	
+    			}
+    		});
+		},500);
+    }
+    
 	function openBoxSol(group,usucod){
 
-		/*$("#dialog").dialog(
-			{autoOpen: true, 
-				width: 800, 
-				modal: true, 
-				type: 'POST', 
-				data:'id=1', 
-			open: 
-			$.ajax({url: "/views/box_solicitud.php?group="+group+"&id"+usucod, 
-				success: function(result){
-        			$("#dialog").html(result);	
-    			}
-    		})
-		});*/
-		
 		setTimeout(function(){
 			$.ajax({url: "views/box_solicitud.php", 
 				data: {group: group, id: usucod, metodo: 'enviar'},

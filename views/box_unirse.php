@@ -1,15 +1,24 @@
 <?php
   
-  if(isset($_GET['id']) && isset($_GET['group'])){
+  if( isset($_GET['group'])){
     require '../models/conexion.php'; 
     require "../models/grupo.php";
-    require '../controllers/home_controller.php';
+    require "../models/apuesta.php";
 
-    $objHomeController = new homeController();
+    $objGrupo = new grupo_model();
+    $objApuesta = new apuesta_model();
+    
 
-    $dataDetalle = $objHomeController->obtenerDetalleApuesta($_GET['group'], $_GET['id']);
+    $dataDetalle = $objGrupo->obtenerGrupoAbierto($_GET['group']);
     if(count($dataDetalle) == 0){
       die("Usted no tiene acceso a este grupo");
+    }
+    
+    $existe = $objApuesta->existeSolicitud($_GET['group'],IDUSUARIO);
+    if(count($existe) > 0){
+        echo "<br>
+         <p>Se ha enviado su solicitud, espere la confirmación</p>";
+         exit;
     }
     
   } else {
@@ -32,7 +41,7 @@
         	</div>
         	<div class="col-sm-12 col-md-6 col-lg-6">
         		<div class="form-group">
-	        		<label>Monto de Apuesta:</label>
+	        		<label>Monto Total de la Apuesta:</label>
 	        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="<?php echo MONEDA.''.number_format($dataDetalle[0]['monto_apuesta']); ?>">
 	        	</div>
         	</div>
@@ -45,7 +54,7 @@
         		
 		            <div >
             <form id="frmsol" name="frmsol" method="POST" >
-              <input type="hidden" name="metodo" value="aceptar"/>
+              <input type="hidden" name="metodo" value="unirse"/>
 						<table id="tblMarcador" class="table table-bordered table-striped table-sm table-dark" width="100%">
 						    <thead class="">
 						        <tr>
@@ -94,7 +103,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" id="btnCancel" onclick="closeBox()" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <input type="button" id="btnSave" onclick="saveAsSol()" value="Guardar" class="btn btn-primary" >
+        <input type="button" id="btnSave" onclick="saveAsSol()" value="Enviar" class="btn btn-primary" >
         <!-- onclick="javascript:GuardarMarcacion()" -->
       </div>
     </div>
@@ -106,7 +115,7 @@
     }
     
     function saveAsSol(){
-      console.log($('#frmsol').serialize());
+    
       swal({
         title: 'Enviar Solicitud?',
         text: "Si, desea valide el marcador!",
@@ -125,18 +134,14 @@
               type: 'POST',
               dataType: 'html',
               success: function(r){
-                console.log(r);
-                if(r == 'OK'){
+            
                   closeBox();
                   swal(
-                    'Envio Correctamente!',
+                    'Se envio su solicitud!',
                     'Espere su confirmación.',
                     'success'
                   );
-                } else {
-
-                }
-              
+             
               }
           });
 
