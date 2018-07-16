@@ -38,30 +38,41 @@
 				    			if(count($dataGrupos) > 0){
 
 					    			foreach($dataGrupos as  $record) { 
-					    				
 					    				?>
 					    				
 					    				<tr>
-									            <td><a href='?p=detalle_grupo'><?php echo utf8_encode($record['grupos']); ?></a></td>
+									            <td><a href='?p=detalle_grupo&c=<?php echo $record['Id_Grp']; ?>'><?php echo utf8_encode($record['grupos']); ?></a></td>
 									            <td><?php echo utf8_encode($record['administrador']); ?></td>
 									            <td><?php echo $record['fecha_prim_part']; ?></td>
 									            <td><?php echo $record['cant_amigos']; ?></td>
 									            <td><?php echo MONEDA.' '. number_format($record['total_apuesta'],2); ?></td>
 									            <?php 
+
+									            	if ($record['estado']=="Abierto") {
+
+									            ?>
+
+
+									            <?php 
 									            	if ($record['administrador']=="Administrador") {
 									            ?>
 									            
 									            <td>
-								            		<button type="button" data-placement="bottom" title="Completar Marcador" class="btn btn-info btn-sm btn-icon" data-toggle='modal' data-target='#enviarSolicitud'>
+								                	<button type="button" 
+										            data-placement="bottom" title="Completar Marcador" 
+										            class="btn btn-info btn-sm btn-icon" data-target='#enviarSolicitud'
+										            data-toggle='modal' onclick="openBoxSol(<?php echo $record['Id_Grp']; ?>,<?php echo IDUSUARIO; ?>)" >
 								                    <i class="fa fa-list"></i>
 								                	</button>
+								                	<span>
 									            	<a href="?p=actualizar_grupo&c=<?php echo $record['Id_Grp']; ?>">
 									            	
 									            	<?php echo $record['solicitudes']; ?>
 									            	</a> 
+									            	</span>
 									            </td>
 
-								            	<?php }else {
+								            	<?php } else {
 
 								            	 ?>
 							            		<td>	
@@ -71,11 +82,22 @@
 										            data-toggle='modal' onclick="openBoxSol(<?php echo $record['Id_Grp']; ?>,<?php echo IDUSUARIO; ?>)" >
 								                    <i class="fa fa-check"></i>
 								                	</button>
-									                <button type="button" onclick="quizSol(<?php echo 1; ?>,<?php echo 2; ?>)" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Rechazar" class="btn btn-danger btn-sm btn-icon">
+									                <button type="button" onclick="quizSol(<?php echo IDUSUARIO; ?>,<?php echo $record['Id_Grp']; ?>)" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Rechazar" class="btn btn-danger btn-sm btn-icon">
 									                    <i class="fa fa-times"></i>
 									                </button>		
 								            	</td>
-							            		<?php } ?>
+							            		<?php }
+							            	}else{
+
+							            	 ?>
+
+							            	 	<td>-</td>
+
+							            		<?php 
+
+							            			}
+
+							            		 ?>
 
 
 									            <td><?php echo $record['estado']; ?></td>
@@ -294,6 +316,27 @@ function acepSol(){
 				    );*/
               }
           });
+	}
+
+	actualizarEstado();
+
+	function actualizarEstado() {
+		// body...
+		$.ajax({
+          type: 'POST',
+          url: 'controllers/usuario_controller.php',
+          //dataType: 'json',
+          //contentType: 'application/json',
+          data: { action : "actualizarEstadoGrupo" },
+          success: function(response) {
+          		console.log(response);
+
+          },
+          error: function(error) {
+              console.log(error);
+          }
+    	});	
+
 	}
 
 </script>

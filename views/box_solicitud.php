@@ -32,7 +32,7 @@
         	</div>
         	<div class="col-sm-12 col-md-6 col-lg-6">
         		<div class="form-group">
-	        		<label>Monto Total de la Apuesta:</label>
+	        		<label>Monto de Apuesta:</label>
 	        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="<?php echo MONEDA.''.number_format($dataDetalle[0]['monto_apuesta']); ?>">
 	        	</div>
         	</div>
@@ -106,7 +106,7 @@
     }
     
     function saveAsSol(){
-    
+      console.log($('#frmsol').serialize());
       swal({
         title: 'Enviar Solicitud?',
         text: "Si, desea valide el marcador!",
@@ -125,6 +125,7 @@
               type: 'POST',
               dataType: 'html',
               success: function(r){
+                console.log(r);
                 if(r == 'OK'){
                   closeBox();
                   swal(

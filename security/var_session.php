@@ -4,6 +4,6 @@
         $value = $_POST['value'];
         $_SESSION["session"] = $value;
     }
-    echo $_SESSION["session"];
+    //echo $_SESSION["session"];
 
-?>clear
+?>

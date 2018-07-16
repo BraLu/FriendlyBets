@@ -132,3 +132,57 @@
 	</div>
 
 </div>
+
+
+<script type="text/javascript">
+	
+	serviceActualizarData();
+
+	function serviceActualizarData() {
+		// body...
+		fbShowLoading();
+		//Ajax Para Obtener los partidos
+		$.ajax({
+          type: 'POST',
+          url: 'controllers/usuario_controller.php',
+          //dataType: 'json',
+          //contentType: 'application/json',
+          data: { action : "serviceApiPartidos" },
+          success: function(response) {
+          		//console.log(JSON.parse(response));
+          		//Ajax actualizar datos de los partidos
+          		$.ajax({
+		          type: 'POST',
+		          url: 'controllers/usuario_controller.php',
+		          //dataType: 'json',
+		          //contentType: 'application/json',
+		          data: { action : "actualizarPartido", partidos: JSON.parse(response)},
+		          success: function(response) {
+		          		//console.log(response);
+		          		fbHideLoading();
+		          		$.each( JSON.parse(response), function( key, val ) {
+						    if(val.status==400){
+					    		fbNotify('top','right','danger',val.message);
+						    }else if(val.status==200){
+
+						    	fbNotify('top','right','info',val.message);
+
+						    }
+						});
+		          },
+		          error: function(error) {
+		              console.log(error);
+		          }
+		    	});	
+
+
+
+          },
+          error: function(error) {
+              console.log(error);
+          }
+    	});	
+
+	}
+
+</script>

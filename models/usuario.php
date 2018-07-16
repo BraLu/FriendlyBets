@@ -95,5 +95,35 @@ where g.Id_grp = ".$id_grp.";");
         return $this->apuesta;
     }
 
+    public function calculoPuntaje($p_Id_Grp){
+        $consulta=$this->db->query("CALL sp_calcular_puntaje(".$p_Id_Grp.")");
+        //while($filas=$consulta->fetch_assoc()){
+            //$this->apuesta=$filas;
+        //}
+        //return $this->$apuesta;
+    }
+
+    public function actualizarPartido($p_Equipo_1, $p_Equipo_2, $p_Fecha_Part, $p_Hora_Part, $p_Goles_1, $p_Goles_2, $p_Penales_1, $p_Penales_2, $p_sts_part){
+        $consulta=$this->db->query("CALL sp_actualizar_partido('".$p_Equipo_1."','".$p_Equipo_2."','".$p_Fecha_Part."','".$p_Hora_Part."',".$p_Goles_1.",".$p_Goles_2.",".$p_Penales_1.",".$p_Penales_2.",'".$p_sts_part."')");
+        //while($filas=$consulta->fetch_assoc()){
+            //$this->apuesta=$filas;
+        //}
+        //return $this->$apuesta;
+        /*return "CALL sp_actualizar_partido('".$p_Equipo_1."','".$p_Equipo_2."','".$p_Fecha_Part."','".$p_Hora_Part."',".$p_Goles_1.",".$p_Goles_2.",".$p_Penales_1.",".$p_Penales_2.",'".$p_sts_part."')";*/
+    }
+
+    public function actualizarEstadoGrupo(){
+        $consulta=$this->db->query("CALL sp_actualizar_estado_grupo()");
+        //while($filas=$consulta->fetch_assoc()){
+            //$this->apuesta=$filas;
+        //}
+        //return $this->$apuesta;
+    }
+
+
+    public function solicitudUnirseGrupo($p_Id_Grp,$p_Id_Usr){
+        $consulta=$this->db->query("CALL sp_solicitud_unirse_grupo(".$p_Id_Grp.",".$p_Id_Usr.")");
+    }
+
 }
 ?>
