@@ -42,14 +42,13 @@
 					    				
 					    				<tr>
 									            <td><a href='?p=detalle_grupo&c=<?php echo $record['Id_Grp']; ?>'><?php echo utf8_encode($record['grupos']); ?></a></td>
-									            <td><a href='?p=detalle_grupo&id=<?php echo $record['Id_Grp']; ?>'><?php echo utf8_encode($record['grupos']); ?></a></td>
 									            <td><?php echo utf8_encode($record['administrador']); ?></td>
 									            <td><?php echo $record['fecha_prim_part']; ?></td>
 									            <td><?php echo $record['cant_amigos']; ?></td>
 									            <td><?php echo MONEDA.' '. number_format($record['total_apuesta'],2); ?></td>
 									            <?php 
 
-									            	if ($record['estado']=="Abierto") {
+									            	if ($record['estado']=="abierto") {
 
 									            ?>
 

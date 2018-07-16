@@ -267,7 +267,7 @@
 	          		$.each(JSON.parse(response),function (key,val) {
 	          			$("#txt_nombre_grupo").val(val.Nombre_Grp);
 						$("#txt_monto_apuesta").val(val.Monto_Apuesta);
-						if (val.Sts_Grp == "Abierto") {
+						if (val.Tipo_Grp == "A") {
 							$("#chk_tipo_grupo").attr("checked","checked");
 						}
 						
@@ -398,7 +398,7 @@
 	          	items.push("<td hidden>"+arrayAmistades[i].id+"</td>");
 	          	items.push("<td>"+arrayAmistades[i].nombres+"</td>");
 	          	items.push("<td>"+arrayAmistades[i].email+"</td>");
-	          	items.push("<td>Pendiente</td>");
+	          	items.push("<td>pendiente</td>");
 	          	items.push("<td>"+"<input type='checkbox' id='pago-check-"+arrayAmistades[i].id+"'/> "+"</td>");
 	          	items.push("<td>"+"<button type='button' title='Remover' onclick='javascript:removeAmigoLista("+arrayAmistades[i].id+");' class='btn btn-danger btn-sm btn-icon'><i class='fa fa-times fa-sm'></i></button>"+"</td>");
 	          	items.push("</tr>");
