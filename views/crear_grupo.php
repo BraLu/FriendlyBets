@@ -75,7 +75,7 @@
 				</div>
 
 		  		<div class="form-group">
-		      
+		      		
 		            <div class="table-responsive" >
 						<table id="tbl_amigos_apuesta" class="table table-bordered table-striped table-sm table-dark" >
 						    <thead class="">
@@ -117,7 +117,7 @@
 						            <th>Equipo 1</th>
 						            <th>Equipo 2</th>
 						            <th>Fecha</th>
-						            <th>Hora</th>
+						            <th>Hora (24 H)</th>
 						            <th>Estado</th>
 						            <th>Marcar</th>
 						        </tr>
@@ -296,7 +296,15 @@
 			              	items1.push("<td hidden>"+val.Id_Usr+"</td>");
 			              	items1.push("<td>"+val.Nombre+" " +val.Apellidos+"</td>");
 			              	items1.push("<td>"+val.email+"</td>");
-			              	items1.push("<td>"+val.Sts_Solicitud_Usr+"</td>");
+
+			              	if (val.Sts_Solicitud_Usr=="Unirse") {
+			              		items1.push("<td><a href='#' onclick='javascript:fnUnirseGrupo("+val.Id_Usr+")'>Unirlo</a></td>");
+			              	}else{
+			              		items1.push("<td>"+val.Sts_Solicitud_Usr+"</td>");
+			              	}
+
+			              	
+
 			              	if (val.Ind_Pago=="N") {
 		              			items1.push("<td>"+"<input type='checkbox' id='pagoa-check-"+val.Id_Usr+"'/> "+"</td>");
 			              	}else{
@@ -391,7 +399,7 @@
 	          	items.push("<td>"+arrayAmistades[i].nombres+"</td>");
 	          	items.push("<td>"+arrayAmistades[i].email+"</td>");
 	          	items.push("<td>Pendiente</td>");
-	          	items.push("<td>"+"<input type='checkbox' id='pago-check-"+arrayAmistades[i].idUsuario+"'/> "+"</td>");
+	          	items.push("<td>"+"<input type='checkbox' id='pago-check-"+arrayAmistades[i].id+"'/> "+"</td>");
 	          	items.push("<td>"+"<button type='button' title='Remover' onclick='javascript:removeAmigoLista("+arrayAmistades[i].id+");' class='btn btn-danger btn-sm btn-icon'><i class='fa fa-times fa-sm'></i></button>"+"</td>");
 	          	items.push("</tr>");
 	          	arrayAmistades[i].estado=true;
@@ -539,7 +547,7 @@
 	    		fbShowLoading();
 	    		if (bool_accion_view) {
 
-	    			
+
 	    			var check = "C";
 		    		if ($("#chk_tipo_grupo").is(':checked')) check = "A";
 
@@ -566,14 +574,22 @@
 							var Equipo1 = $(this).find("td").eq(1).html();
 							var Equipo2 = $(this).find("td").eq(2).html();
 							var Fecha = $(this).find("td").eq(3).html();
-							var date = new Date(Fecha);
+							var a = Fecha.split('/');
+							var dia = a[0];
+							var mes = a[1];
+							var anio = a[2];
+
+							//var date = new Date(Fecha);
+							//console.log(date);
 							var Hora = $(this).find("td").eq(4).html();
 							var obj = {
 									    p_Equipo1: Equipo1,
 									    p_Equipo2: Equipo2,
-									    p_Fecha: date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(),
+									    //p_Fecha: date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate(),
+									    p_Fecha: anio + '-' + mes + '-' + dia,
 									    p_Hora: Hora,
 									  };
+								console.log(obj);  
 						  	arrayPartidos.push(obj);
 						  }
 					});
@@ -595,16 +611,50 @@
 				          		  grupo : p_grupo
 				          		},
 				          success: function(response) {
+				          		//console.log(response);
 				          		//console.log(JSON.parse(response));
-				          		fbHideLoading();
+				          		//fbHideLoading();
 				          		$.each( JSON.parse(response), function( key, val ) {
 								    if(val.status==400){
 							    		fbNotify('top','right','danger',val.message);
 								    }else if(val.status==200){
-								    	fbNotify('top','right','success',val.message);
-								    	location='security/iniciar_session.php';
+
+								    	var emails = "";
+							    		$('#tbl_amigos_apuesta tbody tr').each(function () {
+											var email = $(this).find("td").eq(2).html();
+											emails = emails + email + ",";
+										});
+
+										var objEmails = {
+													    email: emails,
+													    grupo: $("#txt_nombre_grupo").val() 
+													  };
+
+									   console.log(objEmails);
+
+								    	$.ajax({
+									          type: 'POST',
+									          url: 'controllers/usuario_controller.php',
+									          //dataType: 'json',
+									          //contentType: 'application/json',
+									          data: { action : "serviceEmail", 
+									          		  emails : JSON.stringify(objEmails)
+									          		},
+									          success: function(response) {
+									          		console.log(response);
+									          		fbHideLoading();
+									          		fbNotify('top','right','success',val.message);
+								    				location='security/iniciar_session.php';
+									          },
+									          error: function(error) {
+									              console.log(error);
+									              fbHideLoading();
+									          }
+									    });
+
 								    }
 								});
+
 				          },
 				          error: function(error) {
 				              console.log(error);
@@ -676,57 +726,112 @@
                 tablaHead = $('#tbl_partidos thead');
   		
   		if (bool_accion_view) {
-  			$.ajax({
-	          type: 'POST',
-	          url: 'controllers/usuario_controller.php',
-	          //dataType: 'json',
-	          //contentType: 'application/json',
-	          data: { action : "servicePartidos", filter_id: /*$("#select_competencia").val()*/ 467 },
-	          success: function(response) {
-	          		tablaBody.empty();
-	          		var items=new Array();
-	          		var rs = JSON.parse(response);
-	          		//console.log(new Date(rs.fixtures[0].date));
-	          		for (var i = 0; i < rs.count; i++) {
-          				if (rs.fixtures[i].status != "FINISHED") {
-          					items.push(rs.fixtures[i]);
-          				}
-          			}
-          			//console.log(items);
-	          		$.each(items,function (key,val) {
-	              		// body...
-	              		if (val.status != "FINISHED") {
-              				var status = "";
-		              		items.push("<tr>");
-		              		items.push("<td hidden>"+ val.awayTeamName + val.homeTeamName  + "</td>");
-		              		items.push("<td>"+ val.awayTeamName +"</td>");
-			              	items.push("<td>"+ val.homeTeamName +"</td>");
-			              	var fecha = new Date(val.date);
-							items.push("<td>"+fecha.toLocaleDateString("en-GB")+"</td>");
-							items.push("<td>"+fecha.toLocaleTimeString("en-GB")+"</td>");
-				              	if (val.status=="TIMED") {
-			              			items.push("<td>PENDIENTE</td>");
-			              			items.push("<td>"+"<input type='checkbox' id='partido-"+val.awayTeamName+val.homeTeamName+"'/></td>");
-				              	}
-				              	else if(val.status=="IN_PLAY")
-				              	{
-				              		items.push("<td>EN JUEGO</td>");
-			              			items.push("<td></td>");
+  			var value_api = $("#value_api").val();
+  			if (value_api=="1") {
 
-				              	}else{
-			              			items.push("<td>EN DEFINICIÓN</td>");
-			              			items.push("<td></td>");
-				              	}
+	  			$.ajax({
+		          type: 'POST',
+		          url: 'controllers/usuario_controller.php',
+		          //dataType: 'json',
+		          //contentType: 'application/json',
+		          data: { action : "servicePartidos", filter_id: /*$("#select_competencia").val()*/ 467 },
+		          success: function(response) {
+		          		tablaBody.empty();
+		          		var items=new Array();
+		          		var rs = JSON.parse(response);
+		          		//console.log(new Date(rs.fixtures[0].date));
+		          		for (var i = 0; i < rs.count; i++) {
+	          				if (rs.fixtures[i].status != "FINISHED") {
+	          					items.push(rs.fixtures[i]);
+	          				}
+	          			}
+	          			//console.log(items);
+		          		$.each(items,function (key,val) {
+		              		// body...
+		              		if (val.status != "FINISHED") {
+	              				var status = "";
+			              		items.push("<tr>");
+			              		items.push("<td hidden>"+ val.awayTeamName + val.homeTeamName  + "</td>");
+			              		items.push("<td>"+ val.awayTeamName +"</td>");
+				              	items.push("<td>"+ val.homeTeamName +"</td>");
+				              	var fecha = new Date(val.date);
+								items.push("<td>"+fecha.toLocaleDateString("en-GB")+"</td>");
+								items.push("<td>"+fecha.toLocaleTimeString("en-GB")+"</td>");
+					              	if (val.status=="TIMED") {
+				              			items.push("<td>PENDIENTE</td>");
+				              			items.push("<td>"+"<input type='checkbox' id='partido-"+val.awayTeamName+val.homeTeamName+"'/></td>");
+					              	}
+					              	else if(val.status=="IN_PLAY")
+					              	{
+					              		items.push("<td>EN JUEGO</td>");
+				              			items.push("<td></td>");
 
-			              	items.push("</tr>");
-	              		}
-	              	});
-          			tablaBody.append(items.join(''));
-	          },
-	          error: function(error) {
-	              console.log(error);
-	          }
-	    	});	
+					              	}else{
+				              			items.push("<td>EN DEFINICIÓN</td>");
+				              			items.push("<td></td>");
+					              	}
+
+				              	items.push("</tr>");
+		              		}
+		              	});
+	          			tablaBody.append(items.join(''));
+		          },
+		          error: function(error) {
+		              console.log(error);
+		          }
+		    	});	
+
+  			}else{
+  				$.ajax({
+		          type: 'POST',
+		          url: 'controllers/usuario_controller.php',
+		          //dataType: 'json',
+		          //contentType: 'application/json',
+		          data: { action : "serviceApiPartidos" },
+		          success: function(response) {
+		          		console.log(JSON.parse(response));
+		          		
+		          		tablaBody.empty();
+		          		//var items=new Array();
+		          		var items = JSON.parse(response);
+						
+		          		$.each(items,function (key,val) {
+		              		// body...
+		              		if (val.estado != "FINALIZADO") {
+	              				var estado = "";
+			              		items.push("<tr>");
+			              		items.push("<td hidden>"+ val.equipo1 + val.equipo2  + "</td>");
+			              		items.push("<td>"+ val.equipo1 +"</td>");
+				              	items.push("<td>"+ val.equipo2 +"</td>");
+								items.push("<td>"+val.fecha+"</td>");
+								items.push("<td>"+val.hora+"</td>");
+					              	if (val.estado=="PENDIENTE") {
+				              			items.push("<td>PENDIENTE</td>");
+				              			items.push("<td>"+"<input type='checkbox' id='partido-"+val.equipo1+val.equipo2+"'/></td>");
+					              	}
+					              	else if(val.estado=="CURSO")
+					              	{
+					              		items.push("<td>CURSO</td>");
+				              			items.push("<td></td>");
+
+					              	}else{
+				              			items.push("<td>EN DEFINICIÓN</td>");
+				              			items.push("<td></td>");
+					              	}
+
+				              	items.push("</tr>");
+		              		}
+		              	});
+	          			tablaBody.append(items.join(''));
+		          },
+		          error: function(error) {
+		              console.log(error);
+		          }
+		    	});	
+  			}
+
+  			
+
   		}
   	}
 
@@ -756,4 +861,68 @@
 	    });		
   	}
 
+  	function fnUnirseGrupo(vid_Usr) {
+  		// body...
+  		$.ajax({
+	          type: 'POST',
+	          url: 'controllers/usuario_controller.php',
+	          //dataType: 'json',
+	          //contentType: 'application/json',
+	          data: { action : "solicitudUnirseGrupo", id_Grp: $("#accion_grupo_id").val(), id_Usr: vid_Usr },
+	          success: function(responsex) {
+	          		console.log(responsex);
+
+	          		var tablaa = $('#tbl_amigos_apuesta'),
+		                tablaBodya = $('#tbl_amigos_apuesta tbody'),
+		                tablaHeada = $('#tbl_amigos_apuesta thead');
+
+						$.ajax({
+					          type: 'POST',
+					          url: 'controllers/usuario_controller.php',
+					          //dataType: 'json',
+					          //contentType: 'application/json',
+					          data: { action : "getByDetallePendienteUsuarios", id_Grp: $("#accion_grupo_id").val() },
+					          success: function(response) {
+					          	//console.log(JSON.parse(response));
+					          		//datos usuarios
+					          		tablaBodya.empty();
+					          		var items1=new Array();
+				          			//console.log(items);
+					          		$.each(JSON.parse(response),function (key,val) {
+					              		// body...
+					              		items1.push("<tr>");
+							              	items1.push("<td hidden>"+val.Id_Usr+"</td>");
+							              	items1.push("<td>"+val.Nombre+" " +val.Apellidos+"</td>");
+							              	items1.push("<td>"+val.email+"</td>");
+
+							              	if (val.Sts_Solicitud_Usr=="Unirse") {
+							              		items1.push("<td><a href='#' onclick='javascript:fnUnirseGrupo("+val.Id_Usr+")'>Unirlo</a></td>");
+							              	}else{
+							              		items1.push("<td>"+val.Sts_Solicitud_Usr+"</td>");
+							              	}
+
+							              	
+
+							              	if (val.Ind_Pago=="N") {
+						              			items1.push("<td>"+"<input type='checkbox' id='pagoa-check-"+val.Id_Usr+"'/> "+"</td>");
+							              	}else{
+							              		items1.push("<td>"+"<input type='checkbox' checked id='pagoa-check-"+val.Id_Usr+"'/> "+"</td>");
+							              	}
+							              	items1.push("<td>-</td>");
+							              	items1.push("</tr>");
+					              	});
+				          			tablaBodya.append(items1.join(''));
+					          },
+					          error: function(error) {
+					              console.log(error);
+					          }
+
+				  	});
+
+	          },
+	          error: function(errorx) {
+	              console.log(errorx);
+	          }
+      	});
+  	}
 </script>

@@ -29,6 +29,7 @@
           </div>
       </div>
       -->
+      <input type="hidden" name="value_api" id="value_api" value="2">
       <div class="modal-fbloading" style="display: none;">
           <div style="background-color: #000;position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 1060;opacity: 0.20;"></div>
           <div id="fbloading"><img src="assets/img/loading.gif"></div>
@@ -72,6 +73,13 @@
                     $id = isset($_GET['c']) ? strtolower($_GET['c']) : '0';
                     $pagina="crear_grupo";
                     echo "<input type='hidden' name='accion_grupo_id' id='accion_grupo_id' value='".$id."'><input type='hidden' name='accion_grupo' id='accion_grupo' value='update_grupo'>";
+                  }
+
+                  if ($pagina=="detalle_grupo") {
+                    # code...
+                    $id = isset($_GET['c']) ? strtolower($_GET['c']) : '0';
+                    $pagina="detalle_grupo";
+                    echo "<input type='hidden' name='accion_grupo_id' id='accion_grupo_id' value='".$id."'>";
                   }
 
                   include('views/' . $pagina . '.php');
