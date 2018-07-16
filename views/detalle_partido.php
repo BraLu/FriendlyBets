@@ -62,7 +62,7 @@
 
         			</tbody>
         		</table>
-        	    <a href='?p=detalle_grupo&id=<?php echo $detalle[0]['id_grp']; ?>'>Regresar</a>	
+        	    <a href='?p=detalle_grupo&c=<?php echo $detalle[0]['id_grp']; ?>'>Regresar</a>	
         	</div>
         	
         </div>

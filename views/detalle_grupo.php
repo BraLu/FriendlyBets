@@ -3,14 +3,13 @@
 	require 'models/conexion.php'; 
     require "models/grupo.php";
     
-    $idgrupo = isset($_GET['id']) ? $_GET['id']: 0;
+    $idgrupo = $id;
 	$objGrupo = new grupo_model();
 	$data = $objGrupo->obtenerCabeceraGrupo($idgrupo);
 	$detalle = $objGrupo->obtenerBodyGrupo($idgrupo);
 	
 	$row = current($data);
 	$admin = utf8_encode($row['admin']);
-	
 ?>
 
 
