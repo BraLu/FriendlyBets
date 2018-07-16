@@ -1,3 +1,18 @@
+<?php 
+
+	require 'models/conexion.php'; 
+    require "models/grupo.php";
+    
+    $idgrupo = isset($_GET['id']) ? $_GET['id']: 0;
+	$objGrupo = new grupo_model();
+	$data = $objGrupo->obtenerCabeceraGrupo($idgrupo);
+	$detalle = $objGrupo->obtenerBodyGrupo($idgrupo);
+	
+	$row = current($data);
+	$admin = utf8_encode($row['admin']);
+	
+?>
+
 
 <div class="row">
 	
@@ -8,7 +23,7 @@
 		        	<div class="col-sm-12 col-md-4 col-lg-4">
 		        		<div class="form-group">
 			        		<label>Administrador del Grupo:</label>
-			        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="Jose Campos">
+			        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="<?php echo $admin; ?> ">
 			        	</div>
 		        	</div>
 		        	<div class="col-sm-12 col-md-12 col-lg-12">
@@ -25,109 +40,43 @@
 					    <thead class="">
 					        <tr>
 					            <th>Participante</th>
-					            <?php
-					            	for ($i=1; $i <=7 ; $i++) { 
-					            		echo "<th>Peru Vs Escocia</br>xx/xx/xxxx</br>hh:mm:ss</th>";
-					            	}
-					            ?>
-					            
+					            <?php foreach($data as $x){ ?>
+				            	<th>
+				            		<a href='<?php echo "?p=detalle_partido&id=".$x['idpartido']."&grp=".$x['idgrupo']; ?>'><b>
+				            			<?php echo utf8_encode($x['partido']); ?></br><?php echo $x['fecha'] ?></br><?php echo $x['hora']?>	
+				            		</b></a>
+				            		
+				            	</th>
+				            	<?php }?>
 					            <th>Total Puntos</th>
 					        </tr>
+					        
+							<tbody>
+								<?php foreach($detalle as $d){ 
+									    $puntos = 0;
+								    ?>
+								<tr>
+								<td><?php echo $d['nombre']; ?></td>
+								<?php foreach($data as $c ){ 
+									$puntos += isset($d['partidos'][$c['idpartido']])? $d['partidos'][$c['idpartido']] : 0;
+								?>
+								<td><?php echo isset($d['partidos'][$c['idpartido']])? $d['partidos'][$c['idpartido']] :'-' ; ?></td>
+								<?php } ?>
+								<td><?php echo $puntos; ?></td>
+								</tr>
+								<?php } ?>
+							</tbody>
 					    </thead>
-					    <tbody>
-
-				    		<?php
-				            	for ($i=1; $i <=7 ; $i++) { 
-				            		echo "<tr>
-								            <td>Juan Carlos</td>
-								            <td>4</td>
-								            <td>5</td>
-								            <td>3</td>
-								            <td>1</td>
-								            <td>1</td>
-								            <td>7</td>
-								            <td>9</td>
-								            <td>55</td>
-								        </tr>";
-				            	}
-				            ?>
-					    	
-
-					    </tbody>
+					    
 					</table>
 				</div>
 
 			  </form>
-
-		  		<hr>
-
-				<div class="card card-body">
-				    <div class="row">
-
-			    		<div class="col-sm-12 col-md-12 col-lg-12">
-			        		<h4>DETALLE DEL PARTIDO</h3>
-			        	</div>
-
-				    	<div class="col-sm-12 col-md-4 col-lg-4">
-			        		<div class="form-group">
-				        		<label>Partido:</label>
-				        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="Peru Vs Escocia">
-				        	</div>
-			        	</div>
-
-			        	<div class="col-sm-12 col-md-4 col-lg-4">
-			        		<div class="form-group">
-				        		<label>Marcador Real:</label>
-				        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="1 - 0">
-				        	</div>
-			        	</div>
-
-			        	<div class="col-sm-12 col-md-4 col-lg-4">
-			        		<div class="form-group">
-				        		<label>Fecha y Hora:</label>
-				        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="xx/xx/xxxx hh:mm:ss">
-				        	</div>
-			        	</div>
-
-		        		<div class="col-sm-12 col-md-12 col-lg-12">
-		        			<div class="table-responsive" style="height: 400px">
-								<table class="table table-bordered table-striped table-sm table-dark" width="100%">
-								    <thead class="">
-								        <tr>
-								            <th>Participante</th>
-								            <th>Marcación Apostada</br>Peru Vs Escocia</th>
-								            <th>Puntos Ganador - Puntos Marcador</th>
-								            <th>Total</th>
-								        </tr>
-								    </thead>
-								    <tbody>
-
-							    		<?php
-							            	for ($i=1; $i <=7 ; $i++) { 
-							            		echo "<tr>
-											            <td>Jose Campos</td>
-											            <td>1 - 0</td>
-											            <td>2 - 2</td>
-											            <td>4</td>
-											        </tr>";
-							            	}
-							            ?>
-								    	
-
-								    </tbody>
-								</table>
-							</div>
-		        		</div>
-
-				    </div>
-			  	</div>
+		  	<hr>
 
 			</div>
 
-
 		</div>
-
-
 
 	</div>
 
@@ -184,5 +133,5 @@
     	});	
 
 	}
-
+	
 </script>
