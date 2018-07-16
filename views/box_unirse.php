@@ -1,5 +1,7 @@
 <?php
   
+session_start();
+
   if( isset($_GET['group'])){
     require '../models/conexion.php'; 
     require "../models/grupo.php";
@@ -7,14 +9,14 @@
 
     $objGrupo = new grupo_model();
     $objApuesta = new apuesta_model();
-    
+      
 
     $dataDetalle = $objGrupo->obtenerGrupoAbierto($_GET['group']);
     if(count($dataDetalle) == 0){
       die("Usted no tiene acceso a este grupo");
     }
-    
-    $existe = $objApuesta->existeSolicitud($_GET['group'],IDUSUARIO);
+
+    $existe = $objApuesta->existeSolicitud($_GET['group'],$_SESSION["session"]);
     if(count($existe) > 0){
         echo "<br>
          <p>Se ha enviado su solicitud, espere la confirmación</p>";

@@ -72,21 +72,39 @@
 									            	</span>
 									            </td>
 
-								            	<?php } else {
+								            	<?php 
+								            	} else {
 
-								            	 ?>
-							            		<td>	
-										            <button type="button" 
-										            data-placement="bottom" title="Aceptar" 
-										            class="btn btn-success btn-sm btn-icon" data-target='#enviarSolicitud'
-										            data-toggle='modal' onclick="openBoxSol(<?php echo $record['Id_Grp']; ?>,<?php echo IDUSUARIO; ?>)" >
-								                    <i class="fa fa-check"></i>
-								                	</button>
-									                <button type="button" onclick="quizSol(<?php echo IDUSUARIO; ?>,<?php echo $record['Id_Grp']; ?>)" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Rechazar" class="btn btn-danger btn-sm btn-icon">
-									                    <i class="fa fa-times"></i>
-									                </button>		
-								            	</td>
-							            		<?php }
+								            			if ($record['solicitudes']=="pendiente") {
+								            				# code...
+
+								            				?>
+								            					<td>	
+														            <button type="button" 
+														            data-placement="bottom" title="Aceptar" 
+														            class="btn btn-success btn-sm btn-icon" data-target='#enviarSolicitud'
+														            data-toggle='modal' onclick="openBoxSol(<?php echo $record['Id_Grp']; ?>,<?php echo IDUSUARIO; ?>)" >
+												                    <i class="fa fa-check"></i>
+												                	</button>
+													                <button type="button" onclick="quizSol(<?php echo IDUSUARIO; ?>,<?php echo $record['Id_Grp']; ?>)" rel="tooltip" data-toggle="tooltip" data-placement="bottom" title="Rechazar" class="btn btn-danger btn-sm btn-icon">
+													                    <i class="fa fa-times"></i>
+													                </button>		
+												            	</td>
+								            				<?php
+
+								            			}else
+								            			{
+
+								            				?>
+
+								            					<td>-</td>
+
+								            				<?php
+
+
+								            			}
+
+							            		}
 							            	}else{
 
 							            	 ?>
