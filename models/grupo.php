@@ -130,6 +130,32 @@ GROUP BY a.id_usr";
 			
 		}
 
+		public function obtenerGrupoAbierto($idgrupo){
+		
+		try {
+    		
+    		$response = array();
+
+				$query = "SELECT g.id_grp, g.nombre_grp, g.sts_grp, g.tipo_grp, g.monto_apuesta, u.nombre, a.id_partido, a.id_usr, a.apuesta_1, a.apuesta_2, p.equipo_1, p.equipo_2, p.goles_1, p.goles_2, p.fecha_part, p.hora_part
+FROM grupo g
+JOIN apuesta a ON a.id_grp = g.id_grp 
+JOIN partido p ON p.id_partido = a.id_partido
+JOIN usuario u ON u.idusuario = g.usr_admin
+WHERE g.id_grp = $idgrupo  ";
+						//echo $query; exit;
+    		$consulta= $this->db->query($query);
+
+	        while($filas=$consulta->fetch_assoc()){
+	            $response[]=$filas;
+	        }
+
+	        return array(0=>current($response));
+
+    	} catch(Exception $e){
+    		throw new Exception($e->getMessage(), 1);    		
+    	}	
+		}
+
     public function obtenerDetalleGrupo($idgrupo, $idUsuario){
 
 		try {

@@ -118,3 +118,444 @@
 [15-Jul-2018 00:12:19 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:0
 [15-Jul-2018 00:12:19 UTC] PHP   2. getByDetallePendientePartidos() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:37
 [15-Jul-2018 00:12:19 UTC] PHP   3. usuario_model->getByDetallePendientePartidos() /home/ubuntu/workspace/proyectpg/FriendlyBets/controllers/usuario_controller.php:313
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 60
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_grp' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_usr' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'id_partido' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 61
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_1' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'equipo_2' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 63
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 01:54:30 UTC] PHP Warning:  Illegal string offset 'fecha_part' in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 64
+[16-Jul-2018 01:54:30 UTC] PHP Stack trace:
+[16-Jul-2018 01:54:30 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 02:31:42 UTC] PHP Warning:  require(../config.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 4
+[16-Jul-2018 02:31:42 UTC] PHP Stack trace:
+[16-Jul-2018 02:31:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 02:31:42 UTC] PHP Fatal error:  require(): Failed opening required '../config.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 4
+[16-Jul-2018 02:31:42 UTC] PHP Stack trace:
+[16-Jul-2018 02:31:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
+[16-Jul-2018 02:33:08 UTC] PHP Fatal error:  Call to undefined method grupo_model::existeSolicitud() in /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php on line 15
+[16-Jul-2018 02:33:08 UTC] PHP Stack trace:
+[16-Jul-2018 02:33:08 UTC] PHP   1. {main}() /home/ubuntu/workspace/proyectpg/FriendlyBets/views/box_unirse.php:0
