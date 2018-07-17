@@ -1,6 +1,6 @@
 <?php 
 
-	require 'models/conexion.php'; 
+	//require 'models/conexion.php'; 
     require "models/grupo.php";
     
     $idgrupo = $id;

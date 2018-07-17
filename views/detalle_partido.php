@@ -1,6 +1,6 @@
 <?php 
 
-	require 'models/conexion.php'; 
+	//require 'models/conexion.php'; 
     require "models/grupo.php";
     
     $idpartido = isset($_GET['id']) ? $_GET['id']: 0;
@@ -28,7 +28,7 @@
         <div class="col-sm-12 col-md-4 col-lg-4">
         	<div class="form-group">
         		<label>Marcador Real:</label>
-        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="1 - 0">
+        		<input type="text" disabled="" class="form-control" placeholder="Admin" value="<?php echo $detalle[0]['marcacion_real']; ?>">
         	</div>
         </div>
         

@@ -104,7 +104,7 @@ session_start();
 
       </div>
       <div class="modal-footer">
-        <button type="button" id="btnCancel" onclick="closeBox()" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" id="btnCancel" onclick="closeBox()" class="btn btn-secondary" >Cancelar</button>
         <input type="button" id="btnSave" onclick="saveAsSol()" value="Enviar" class="btn btn-primary" >
         <!-- onclick="javascript:GuardarMarcacion()" -->
       </div>
@@ -113,7 +113,7 @@ session_start();
   </div>    
   <script type="text/javascript">
   	function closeBox(){
-      $("#enviarSolicitud").dialog('close');
+      $("#enviarSolicitud2").modal('hide');
     }
     
     function saveAsSol(){
@@ -129,7 +129,6 @@ session_start();
         cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.value) {
-
           $.ajax({url: "controllers/servicios_controller.php", 
               contentType: 'application/x-www-form-urlencoded',
               data: $('#frmsol').serialize(),

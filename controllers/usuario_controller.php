@@ -157,7 +157,7 @@ function crearGrupo()
 
  		/*Insertamos al Administrador*/
 		$user=new usuario_model();
-		$response2=$user->crearApuesta($idGrp,$_SESSION["session"],$idPartido,"S","Aceptado");	
+		$response2=$user->crearApuesta($idGrp,$_SESSION["session"],$idPartido,"S","pendiente");	
 		//echo json_encode($response2);
 		/*Insertamos los Amigos*/
 		$arrayAmigos = $grupo["Amigos"];
@@ -166,7 +166,7 @@ function crearGrupo()
 			$usr = $amigo["p_Usr"];
 			$pago = $amigo["p_Pago"];
 			$user=new usuario_model();
-			$response3=$user->crearApuesta($idGrp,$usr,$idPartido,$pago,"Pendiente");	
+			$response3=$user->crearApuesta($idGrp,$usr,$idPartido,$pago,"pendiente");	
 		}
 	}
 
@@ -426,7 +426,7 @@ function actualizarGrupo()
 function calculoPuntaje(){
 	include("../models/usuario.php");
 	$user=new usuario_model();
-	$datos=$user->calculoPuntaje($_SESSION["session"], $_POST["search"]);
+	$datos=$user->calculoPuntaje($_POST["Id_Grp"]);
 	//$json_string = json_encode($datos);
 	//echo $json_string;
 	$respuesta1[] = array("status"=>200,"message"=>"Se registro correctamente.");

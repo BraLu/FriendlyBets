@@ -1,14 +1,14 @@
 <?php
 
-define('HOST','localhost'); 
-define('USER','root');
-define('PASS','');
-define('DBNAME','friendlybets');
-define('MONEDA','S/.');
+if (!defined('HOST')) define('HOST','localhost'); 
+if (!defined('USER')) define('USER','root');
+if (!defined('PASS')) define('PASS','');
+if (!defined('DBNAME')) define('DBNAME','friendlybets');
+if (!defined('MONEDA')) define('MONEDA','S/.');
 
 if (isset($_SESSION["session"])) 
 {
- 	define('IDUSUARIO',$_SESSION['session']);
+ 	if (!defined('IDUSUARIO')) define('IDUSUARIO',$_SESSION['session']);
 }
 
 

@@ -1,5 +1,5 @@
 <?php
-
+	session_start();
 	require '../models/conexion.php'; 
 	require '../models/apuesta.php';
 
@@ -16,10 +16,10 @@
 				$insert = array();
 	    		foreach ($post as $key => $value) {
 	    			list($id_grupo,$id_partido,$nro_apuesta) = explode('_', $key);
-	    			$iden = $id_grupo.$id_usuario;
+	    			$iden = $id_grupo.$id_partido;
 
 	    			$insert[$iden]['idgrupo'] = $id_grupo;
-	    			$insert[$iden]['idusuario'] = IDUSUARIO;
+	    			$insert[$iden]['idusuario'] = $_SESSION["session"];
 	    			$insert[$iden]['idpartido'] = $id_partido;
 	    			$insert[$iden]['apuesta'.$nro_apuesta]=$value;
 	    		}
@@ -32,7 +32,9 @@
 		    		}	
 	    		} else {
 	    			throw new Exception("Sin datos para procesar", 1);
-	    		}	    		
+	    		}	
+
+	    		//echo json_encode($insert);    		
 
 			} catch(Exception $e){
 				throw new Exception($e->getMessage(), 1);				
@@ -86,7 +88,7 @@
     		return true;
     	}
     }
-
+    
     if(isset($_POST['metodo'])){
 
     	$objServicio = new serviciosController();

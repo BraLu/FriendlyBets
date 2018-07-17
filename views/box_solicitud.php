@@ -4,12 +4,21 @@
     require '../models/conexion.php'; 
     require "../models/grupo.php";
     require '../controllers/home_controller.php';
+    require "../models/apuesta.php";
 
     $objHomeController = new homeController();
+    $objApuesta = new apuesta_model();
 
     $dataDetalle = $objHomeController->obtenerDetalleApuesta($_GET['group'], $_GET['id']);
     if(count($dataDetalle) == 0){
       die("Usted no tiene acceso a este grupo");
+    }
+
+    $existe = $objApuesta->existeSolicitudAdmin($_GET['group'], $_GET['id']);
+    if(count($existe) > 0){
+        echo "<br>
+         <p>Se ha enviado su marcación correctamente</p>";
+         exit;
     }
     
   } else {
@@ -93,7 +102,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" id="btnCancel" onclick="closeBox()" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" id="btnCancel" onclick="closeBox()" class="btn btn-secondary">Cancelar</button>
         <input type="button" id="btnSave" onclick="saveAsSol()" value="Guardar" class="btn btn-primary" >
         <!-- onclick="javascript:GuardarMarcacion()" -->
       </div>
@@ -102,7 +111,8 @@
   </div>    
   <script type="text/javascript">
   	function closeBox(){
-      $("#enviarSolicitud").dialog('close');
+      $("#enviarSolicitud").modal('hide');
+
     }
     
     function saveAsSol(){
@@ -132,7 +142,10 @@
                     'Envio Correctamente!',
                     'Espere su confirmación.',
                     'success'
-                  );
+                  ).then((result) =>{
+                    location='security/iniciar_session.php';
+                  });
+
                 } else {
 
                 }

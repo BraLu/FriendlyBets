@@ -1,6 +1,6 @@
 <?php  
 
-	require 'models/conexion.php'; 
+	//require 'models/conexion.php'; 
 	require 'models/grupo.php';
 	require 'controllers/home_controller.php';
 	
@@ -92,7 +92,15 @@
 												            	</td>
 								            				<?php
 
-								            			}else
+								            			}elseif ($record['solicitudes']=="unirse") {
+								            				# code...
+
+								            				?>
+								            					<td>A confirmar</td>
+								            				<?php
+
+								            			}
+								            			else
 								            			{
 
 								            				?>
@@ -329,7 +337,7 @@ function acepSol(){
           });
 	}
 
-	actualizarEstado();
+	
 
 	function actualizarEstado() {
 		// body...
@@ -341,6 +349,75 @@ function acepSol(){
           data: { action : "actualizarEstadoGrupo" },
           success: function(response) {
           		console.log(response);
+
+          },
+          error: function(error) {
+              console.log(error);
+          }
+    	});	
+
+	}
+
+	function calculoPuntaje() {
+		// body...
+		$.ajax({
+	      type: 'POST',
+	      url: 'controllers/usuario_controller.php',
+	      //dataType: 'json',
+	      //contentType: 'application/json',
+	      data: { action : "calculoPuntaje", Id_Grp : $("#accion_grupo_id").val(); },
+	      success: function(response) {
+	      		console.log(response);
+
+	      },
+	      error: function(error) {
+	          console.log(error);
+	      }
+		});	
+
+	}
+
+	serviceActualizarData();
+
+	function serviceActualizarData() {
+		// body...
+		fbShowLoading();
+		//Ajax Para Obtener los partidos
+		$.ajax({
+          type: 'POST',
+          url: 'controllers/usuario_controller.php',
+          //dataType: 'json',
+          //contentType: 'application/json',
+          data: { action : "serviceApiPartidos" },
+          success: function(response) {
+          		//console.log(JSON.parse(response));
+          		//Ajax actualizar datos de los partidos
+          		$.ajax({
+		          type: 'POST',
+		          url: 'controllers/usuario_controller.php',
+		          //dataType: 'json',
+		          //contentType: 'application/json',
+		          data: { action : "actualizarPartido", partidos: JSON.parse(response)},
+		          success: function(response) {
+		          		//console.log(response);
+		          		fbHideLoading();
+		          		$.each( JSON.parse(response), function( key, val ) {
+						    if(val.status==400){
+					    		fbNotify('top','right','danger',val.message);
+						    }else if(val.status==200){
+					    		actualizarEstado();
+					    		calculoPuntaje();
+						    	fbNotify('top','right','info',val.message);
+
+						    }
+						});
+		          },
+		          error: function(error) {
+		              console.log(error);
+		          }
+		    	});	
+
+
 
           },
           error: function(error) {

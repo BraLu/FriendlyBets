@@ -5,7 +5,7 @@
      
   }else
   {
-     $_SESSION["session"] = "";
+     $_SESSION["session"] = 0;
      /*echo "Session2".$_SESSION["session"];*/
   }
   

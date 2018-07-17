@@ -108,7 +108,8 @@ AND a.Id_Grp = $idgrupo ";
 			
 			$query = "SELECT CONCAT( u.nombre,  ' ', u.apellidos )  'nombre', 
 CONCAT( p.equipo_1,  ' Vs ', p.equipo_2 )  'partido', 
-CONCAT( a.apuesta_1,  ' - ', a.apuesta_1 )  'marcacion_apost', 
+CONCAT( a.apuesta_1,  ' - ', a.apuesta_2 )  'marcacion_apost', 
+CONCAT( p.Goles_1,  ' - ', p.Goles_2 )  'marcacion_real', 
 CONCAT( a.ptos_result,  ' - ', a.ptos_marcador )  'puntos', 
 puntaje_usr, p.fecha_part, p.Hora_part, g.id_grp
 FROM apuesta a 
@@ -116,7 +117,7 @@ JOIN usuario u on a.id_usr = u.idusuario
 JOIN grupo g on g.id_grp = a.id_grp
 JOIN partido p on g.id_grp = a.id_grp
 WHERE g.id_grp = $idgrupo
-AND p.id_partido = $idpartido 
+AND a.id_partido = $idpartido 
 GROUP BY a.id_usr";
 
 			$response = array();
@@ -136,7 +137,7 @@ GROUP BY a.id_usr";
     		
     		$response = array();
 
-				$query = "SELECT distinct g.id_grp, g.nombre_grp, g.sts_grp, g.tipo_grp, g.monto_apuesta, u.nombre, a.id_partido, a.apuesta_1, a.apuesta_2, p.equipo_1, p.equipo_2, p.goles_1, p.goles_2, p.fecha_part, p.hora_part
+				$query = "SELECT distinct g.id_grp, g.nombre_grp, g.sts_grp, g.tipo_grp, g.monto_apuesta, u.nombre, a.id_partido,  p.equipo_1, p.equipo_2, p.fecha_part, p.hora_part
 FROM grupo g
 JOIN apuesta a ON a.id_grp = g.id_grp 
 JOIN partido p ON p.id_partido = a.id_partido

@@ -1,13 +1,23 @@
 
+<?php 
+
+  require "models/conexion.php"; 
+  require "models/usuario.php";
+
+  $objUsuario1 = new usuario_model();
+  $detalleUser = $objUsuario1->getByUser($_SESSION["session"]);
+  
+?>
+
 <div class="sidebar" data-color="blue">
   <!--
     Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
 -->
   <div class="logo">
-    <a href="http://friendlybets-fluque.c9users.io/proyectpg/FriendlyBets/" class="simple-text logo-mini">
+    <a href="http://localhost/FriendlyBets/" class="simple-text logo-mini">
       FB
     </a>
-    <a href="http://friendlybets-fluque.c9users.io/proyectpg/FriendlyBets/" class="simple-text logo-normal">
+    <a href="http://localhost/FriendlyBets/" class="simple-text logo-normal">
       Friendly Bets
     </a>
   </div>
@@ -18,7 +28,13 @@
 
         if (!empty($_SESSION["session"]) and ($_SESSION["session"] != "")) {
           # code...
-          echo "<li>".
+          echo "<li class='active'>".
+                "<a href='#'>".
+                  "<i class='fa fa-user'></i>".
+                  "<p>".$detalleUser[0]['perfil']."</p>".
+                "</a>".
+              "</li>".
+              "<li>".
                 "<a href='?p=home'>".
                   "<i class='fa fa-home'></i>".
                   "<p>Home</p>".

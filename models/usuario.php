@@ -114,15 +114,20 @@ where g.Id_grp = ".$id_grp.";");
 
     public function actualizarEstadoGrupo(){
         $consulta=$this->db->query("CALL sp_actualizar_estado_grupo()");
-        //while($filas=$consulta->fetch_assoc()){
-            //$this->apuesta=$filas;
-        //}
-        //return $this->$apuesta;
     }
 
 
     public function solicitudUnirseGrupo($p_Id_Grp,$p_Id_Usr){
         $consulta=$this->db->query("CALL sp_solicitud_unirse_grupo(".$p_Id_Grp.",".$p_Id_Usr.")");
+    }
+
+    public function getByUser($p_Id_Usr){
+        $p_id=empty($p_Id_Usr) ? "0" : $p_Id_Usr;
+        $consulta=$this->db->query("select concat(nombre,' ',apellidos) 'perfil' from usuario where idusuario = ".$p_id.";");
+        while($filas=$consulta->fetch_assoc()){
+            $this->usuarios[]=$filas;
+        }
+        return $this->usuarios;
     }
 
 }

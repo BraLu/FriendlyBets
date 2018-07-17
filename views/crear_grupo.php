@@ -135,7 +135,9 @@
 		  		<div class="form-group">
 		  			
 			  		<button type="button" onclick="javascript:guardarGrupo();" class="btn btn-success btn-size-grupo" style="width: 150px; float: right;">Guardar</button>	
-		      		<button type="button" class="btn btn-info btn-size-grupo" id="btn_puntaje" style="width: 150px; float: right;">Puntaje</button>
+
+
+		      		<button type="button" class="btn btn-info btn-size-grupo" id="btn_puntaje" style="width: 150px; float: right;"><a style="color: #fff" href="?p=detalle_grupo&c=<?php echo $id ?>">Puntaje</a></button>
 		      		<!--<button type="button" class="btn btn-danger btn-size-grupo" disabled="" style="width: 150px; float: right;">Eliminar Grupo</button>-->
 
 			  	</div>
@@ -297,7 +299,7 @@
 			              	items1.push("<td>"+val.Nombre+" " +val.Apellidos+"</td>");
 			              	items1.push("<td>"+val.email+"</td>");
 
-			              	if (val.Sts_Solicitud_Usr=="Unirse") {
+			              	if (val.Sts_Solicitud_Usr=="unirse") {
 			              		items1.push("<td><a href='#' onclick='javascript:fnUnirseGrupo("+val.Id_Usr+")'>Unirlo</a></td>");
 			              	}else{
 			              		items1.push("<td>"+val.Sts_Solicitud_Usr+"</td>");
@@ -895,7 +897,7 @@
 							              	items1.push("<td>"+val.Nombre+" " +val.Apellidos+"</td>");
 							              	items1.push("<td>"+val.email+"</td>");
 
-							              	if (val.Sts_Solicitud_Usr=="Unirse") {
+							              	if (val.Sts_Solicitud_Usr=="unirse") {
 							              		items1.push("<td><a href='#' onclick='javascript:fnUnirseGrupo("+val.Id_Usr+")'>Unirlo</a></td>");
 							              	}else{
 							              		items1.push("<td>"+val.Sts_Solicitud_Usr+"</td>");
